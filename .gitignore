@@ -1,0 +1,5 @@
+# Files and folders excluded from the repository
+*.class
+*.jar
+/build/
+/dist/
