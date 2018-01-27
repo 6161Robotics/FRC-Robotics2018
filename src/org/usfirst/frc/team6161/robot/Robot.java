@@ -7,13 +7,13 @@
 
 package org.usfirst.frc.team6161.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team6161.robot.commands.ExampleCommand;
-import org.usfirst.frc.team6161.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,12 +23,15 @@ import org.usfirst.frc.team6161.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends IterativeRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
-	public static OI m_oi;
-
-	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	public static final DriveBase driveBase = new DriveBase();
+//	public static final climberBase climberBase = new climberBase();
+//	public static final dumpBase dumpBase = new dumpBase();
+//	public static final roombaBase roombaBase = new roombaBase();
+	public static OI oi;
+	
+	PowerDistributionPanel pdp; 
+	Command autonomousCommand;
+	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -36,12 +39,29 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		CameraServer.getInstance().startAutomaticCapture();
+		RobotMap.init();
+		oi = new OI();
+		pdp = new PowerDistributionPanel();
+		/*
+		chooser.addDefault("Default Auto", new AutoStraight());
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("Auto mode", chooser);
+		
+		chooser.addObject("MidGearDeposit", new AutoMidGear());
+		SmartDashboard.putData("Auto MidGear mode", chooser);
+		*/
+		driveBase.init();
+		
+		// TODO: Initialize other subsystems
+//		climberBase.init();
+//		dumpBase.init();
+//		roombaBase.init();
+		// call other subsystem inits here
+
 	}
 
+	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -70,19 +90,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.start();
-		}
 	}
 
 	/**
@@ -95,13 +103,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (m_autonomousCommand != null) {
-			m_autonomousCommand.cancel();
-		}
 	}
 
 	/**
