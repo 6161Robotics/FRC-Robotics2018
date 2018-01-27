@@ -7,6 +7,13 @@
 
 package org.usfirst.frc.team6161.robot;
 
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -23,4 +30,60 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
+	public static SpeedController driveBaseRightFront;
+    public static SpeedController driveBaseRightRear;
+    public static SpeedController driveBaseLeftFront;
+    public static SpeedController driveBaseLeftRear;
+    public static DifferentialDrive driveBaseThe4Motors;
+    public static SpeedController dumpBaseDumpMotor;
+    public static SpeedController climberBaseclimbMotor;
+    public static SpeedController roombaBaseRoombaMotor;
+    
+    
+    
+    
+    public static void init() {
+    	 driveBaseRightFront = new Spark(2);
+//         LiveWindow.addActuator("DriveBase", "RightFront", (Spark) driveBaseRightFront);
+         
+         driveBaseRightRear = new Spark(3);
+//         LiveWindow.addActuator("DriveBase", "RightRear", (Spark) driveBaseRightRear);
+
+         SpeedControllerGroup rightSpeedController = new SpeedControllerGroup(driveBaseRightFront, driveBaseRightRear);
+         
+         driveBaseLeftFront = new Spark(0);
+//         LiveWindow.addActuator("DriveBase", "LeftFront", (Spark) driveBaseLeftFront);
+         
+         driveBaseLeftRear = new Spark(1);
+//         LiveWindow.addActuator("DriveBase", "LeftRear", (Spark) driveBaseLeftRear);
+  
+         SpeedControllerGroup leftSpeedController = new SpeedControllerGroup(driveBaseLeftFront, driveBaseLeftRear);
+
+       
+         
+         driveBaseThe4Motors = new DifferentialDrive(leftSpeedController, rightSpeedController);
+         
+         driveBaseThe4Motors.setSafetyEnabled(false);
+         driveBaseThe4Motors.setExpiration(0.1);//0.1 default
+// TODO: update to new API         driveBaseThe4Motors.setSensitivity(0.5);
+         driveBaseThe4Motors.setMaxOutput(1.0);
+         
+//         driveBaseThe4Motors. setInvertedMotor(DifferentialDrive.MotorType.kFrontLeft, true);
+//         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearLeft, true);
+         leftSpeedController.setInverted(true);
+         
+//         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kFrontRight, true);
+//         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearRight, true);
+         rightSpeedController.setInverted(true);
+         
+         dumpBaseDumpMotor = new Victor(5);
+//         LiveWindow.addActuator("DumpBase", "DumpMotor", (Victor) dumpBaseDumpMotor);
+         
+         climberBaseclimbMotor = new VictorSP(4);
+//         LiveWindow.addActuator("LiftBase", "LiftMotor", (VictorSP) climberBaseclimbMotor);
+         
+         // TODO: Get rid of this eventually since we do not need this functionality
+         roombaBaseRoombaMotor = new Victor(6);
+//         LiveWindow.addActuator("RoombaBase", "RoombaMotor", (Victor) roombaBaseRoombaMotor);
+    }
 }
