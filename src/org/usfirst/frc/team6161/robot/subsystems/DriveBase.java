@@ -26,19 +26,19 @@ public class DriveBase extends Subsystem {
     	return the4Motors;
     }
     public void drivewithJoystick(){
-    	if (Robot.oi.getTheJoystick().getRawButton(8)){
-    		Robot.driveBase.getRobotDrive().arcadeDrive(Robot.oi.theJoystick.getY(), Robot.oi.theJoystick.getTwist());
+    	if (Robot.oi.getTheJoystick().getRawButton(7)){
+    		Robot.driveBase.getRobotDrive().arcadeDrive(Robot.oi.theJoystick.getRawAxis(1), Robot.oi.theJoystick.getRawAxis(4));
     		return;
     	}
     	
-    	if (Robot.oi.theJoystick.getY() > lastForward) {
+    	if (Robot.oi.theJoystick.getRawAxis(1) > lastForward) {
     		lastForward += curve;
     		//lastForward = lastForward + 0.02; <--- same as above
     	}
     	else {
     		lastForward -= curve;
     	}
-    	if (Robot.oi.theJoystick.getTwist() > lastTurn) {
+    	if (Robot.oi.theJoystick.getRawAxis(4) > lastTurn) {
     		lastTurn += curve;
     		//lastTurn = lastTurn + 0.02; <--- same as above
     	}

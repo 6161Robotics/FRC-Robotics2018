@@ -111,7 +111,16 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-	}
+		Robot.driveBase.drivewithJoystick();
+		//Brownout Protection
+		if (pdp.getCurrent(0) > 60.0 ||
+	    		pdp.getCurrent(1) > 60.0 ||
+	    		pdp.getCurrent(2) > 60.0 ||
+	    		pdp.getCurrent(3) > 60.0) {
+	    		
+			//---> modifies joystick inputs
+	    	}
+		}
 
 	/**
 	 * This function is called periodically during test mode.
