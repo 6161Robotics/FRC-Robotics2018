@@ -142,14 +142,14 @@ public class Robot extends IterativeRobot {
 		
 		Robot.driveBase.drivewithJoystick();
 	
-		//Brownout Protection
-		if (pdp.getCurrent(0) > 60.0 ||
-	    		pdp.getCurrent(1) > 60.0 ||
-	    		pdp.getCurrent(2) > 60.0 ||
-	    		pdp.getCurrent(3) > 60.0) {
-	    		
-			//---> modifies joystick inputs
-	    	}
+//		//Brownout Protection
+//		if (pdp.getCurrent(0) > 60.0 ||
+//	    		pdp.getCurrent(1) > 60.0 ||
+//	    		pdp.getCurrent(2) > 60.0 ||
+//	    		pdp.getCurrent(3) > 60.0) {
+//	    		
+//			//---> modifies joystick inputs
+//	    	}
 		}
 
 	/**
