@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
+import org.usfirst.frc.team6161.robot.commands.AutoStraight;
 import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 
 /**
@@ -91,6 +93,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
+		autonomousCommand = new AutoStraight();
+		
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
@@ -103,6 +109,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+	
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
 	}
 
 	/**
@@ -111,7 +120,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
 		Robot.driveBase.drivewithJoystick();
+	
 		//Brownout Protection
 		if (pdp.getCurrent(0) > 60.0 ||
 	    		pdp.getCurrent(1) > 60.0 ||
