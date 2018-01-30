@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
 import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
@@ -25,6 +28,7 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
  * project.
  */
 public class Robot extends IterativeRobot {
+	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
 //	public static final climberBase climberBase = new climberBase();
 //	public static final dumpBase dumpBase = new dumpBase();
@@ -53,6 +57,21 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("MidGearDeposit", new AutoMidGear());
 		SmartDashboard.putData("Auto MidGear mode", chooser);
 		*/
+	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+	    
+	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+	    
+	    SmartDashboard.putNumber("Pitch", imu.getPitch());
+	    SmartDashboard.putNumber("Roll", imu.getRoll());
+	    SmartDashboard.putNumber("Yaw", imu.getYaw());
+	    
+	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
+		
 		driveBase.init();
 		
 		// TODO: Initialize other subsystems
