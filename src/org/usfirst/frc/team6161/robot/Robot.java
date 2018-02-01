@@ -57,20 +57,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("MidGearDeposit", new AutoMidGear());
 		SmartDashboard.putData("Auto MidGear mode", chooser);
 		*/
-	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
-	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
-	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
-	    
-	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
-	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
-	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
-	    
-	    SmartDashboard.putNumber("Pitch", imu.getPitch());
-	    SmartDashboard.putNumber("Roll", imu.getRoll());
-	    SmartDashboard.putNumber("Yaw", imu.getYaw());
-	    
-	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
-	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
+
 		
 		driveBase.init();
 		
@@ -79,7 +66,8 @@ public class Robot extends IterativeRobot {
 //		dumpBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
-
+		
+		
 	}
 
 	
@@ -88,6 +76,10 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
+
+	
+
+	
 	@Override
 	public void disabledInit() {
 
@@ -141,6 +133,21 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		Robot.driveBase.drivewithJoystick();
+		
+	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+	    
+	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+	    
+	    SmartDashboard.putNumber("Pitch", imu.getPitch());
+	    SmartDashboard.putNumber("Roll", imu.getRoll());
+	    SmartDashboard.putNumber("Yaw", imu.getYaw());
+	    
+	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||
