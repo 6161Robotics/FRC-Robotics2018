@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
 import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
@@ -25,6 +28,7 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
  * project.
  */
 public class Robot extends IterativeRobot {
+	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
 //	public static final climberBase climberBase = new climberBase();
 //	public static final dumpBase dumpBase = new dumpBase();
@@ -53,6 +57,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("MidGearDeposit", new AutoMidGear());
 		SmartDashboard.putData("Auto MidGear mode", chooser);
 		*/
+
+		
 		driveBase.init();
 		
 		// TODO: Initialize other subsystems
@@ -60,7 +66,8 @@ public class Robot extends IterativeRobot {
 //		dumpBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
-
+		
+		
 	}
 
 	
@@ -69,6 +76,10 @@ public class Robot extends IterativeRobot {
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
+
+	
+
+	
 	@Override
 	public void disabledInit() {
 
@@ -122,15 +133,30 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		Robot.driveBase.drivewithJoystick();
+		
+	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+	    
+	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+	    
+	    SmartDashboard.putNumber("Pitch", imu.getPitch());
+	    SmartDashboard.putNumber("Roll", imu.getRoll());
+	    SmartDashboard.putNumber("Yaw", imu.getYaw());
+	    
+	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	
-		//Brownout Protection
-		if (pdp.getCurrent(0) > 60.0 ||
-	    		pdp.getCurrent(1) > 60.0 ||
-	    		pdp.getCurrent(2) > 60.0 ||
-	    		pdp.getCurrent(3) > 60.0) {
-	    		
-			//---> modifies joystick inputs
-	    	}
+//		//Brownout Protection
+//		if (pdp.getCurrent(0) > 60.0 ||
+//	    		pdp.getCurrent(1) > 60.0 ||
+//	    		pdp.getCurrent(2) > 60.0 ||
+//	    		pdp.getCurrent(3) > 60.0) {
+//	    		
+//			//---> modifies joystick inputs
+//	    	}
 		}
 
 	/**
