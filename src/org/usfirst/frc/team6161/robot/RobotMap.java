@@ -66,7 +66,7 @@ public class RobotMap {
          driveBaseThe4Motors.setSafetyEnabled(false);
          driveBaseThe4Motors.setExpiration(0.1);//0.1 default
 // TODO: update to new API         driveBaseThe4Motors.setSensitivity(0.5);
-         driveBaseThe4Motors.setMaxOutput(1.0);
+         driveBaseThe4Motors.setMaxOutput(0.9);
          
 //         driveBaseThe4Motors. setInvertedMotor(DifferentialDrive.MotorType.kFrontLeft, true);
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearLeft, true);
