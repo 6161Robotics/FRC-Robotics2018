@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
+import org.usfirst.frc.team6161.robot.subsystems.AutoDrive;
 import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 
 /**
@@ -30,6 +31,7 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 public class Robot extends IterativeRobot {
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
+	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
 //	public static final dumpBase dumpBase = new dumpBase();
 //	public static final roombaBase roombaBase = new roombaBase();

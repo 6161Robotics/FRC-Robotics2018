@@ -1,16 +1,19 @@
-package org.usfirst.frc.team6161.robot.commands;
+ package org.usfirst.frc.team6161.robot.commands;
 
 import org.usfirst.frc.team6161.robot.Robot;
+import org.usfirst.frc.team6161.robot.subsystems.Gyro;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class driveAutoForward extends Command {
+public class DriveAutoForwardWithGyroCorrections extends Command {
     	private int timeout;
-   	 public driveAutoForward(int timeout) {
+    	private Gyro gyro;
+   	 public DriveAutoForwardWithGyroCorrections(int timeout) {
    		 this.timeout = timeout;
+   		 gyro = new Gyro (); 
    	        // Use requires() here to declare subsystem dependencies
    	        // eg. requires(chassis);
    	    	requires(Robot.driveBase);
@@ -23,6 +26,7 @@ public class driveAutoForward extends Command {
     protected void initialize() {
     	setTimeout(timeout);
     	Robot.driveBase.AutoForward();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
