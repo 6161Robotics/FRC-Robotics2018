@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
-import org.usfirst.frc.team6161.robot.subsystems.AutoDrive;
+// TODO import org.usfirst.frc.team6161.robot.subsystems.AutoDrive;
 import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 
 /**
@@ -31,7 +31,7 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
 public class Robot extends IterativeRobot {
 	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
-	public static final AutoDrive autoDrive = new AutoDrive();
+//	TODO is this necceary?	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
 //	public static final dumpBase dumpBase = new dumpBase();
 //	public static final roombaBase roombaBase = new roombaBase();
@@ -51,6 +51,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		oi = new OI();
 		pdp = new PowerDistributionPanel();
+		
 		/*
 		chooser.addDefault("Default Auto", new AutoStraight());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -72,6 +73,27 @@ public class Robot extends IterativeRobot {
 		
 	}
 
+	@Override
+	public void robotPeriodic() {
+		
+	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+
+	    
+	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
+	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
+	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
+	    
+	    SmartDashboard.putNumber("Pitch", imu.getPitch());
+	    SmartDashboard.putNumber("Roll", imu.getRoll());
+	    SmartDashboard.putNumber("Yaw", imu.getYaw());
+	    
+	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
+	
+	}
+	
 	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -79,7 +101,6 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
 	 */
 
-	
 
 	
 	@Override
@@ -122,9 +143,10 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-	
+		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		imu.reset();
 	}
 
 	/**
@@ -136,21 +158,7 @@ public class Robot extends IterativeRobot {
 		
 		Robot.driveBase.drivewithJoystick();
 		
-	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
-	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
-	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
-	    
-	    SmartDashboard.putNumber("Accel-X", imu.getAccelX());
-	    SmartDashboard.putNumber("Accel-Y", imu.getAccelY());
-	    SmartDashboard.putNumber("Accel-Z", imu.getAccelZ());
-	    
-	    SmartDashboard.putNumber("Pitch", imu.getPitch());
-	    SmartDashboard.putNumber("Roll", imu.getRoll());
-	    SmartDashboard.putNumber("Yaw", imu.getYaw());
-	    
-	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
-	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
-	
+
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||
 //	    		pdp.getCurrent(1) > 60.0 ||
