@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		pdp = new PowerDistributionPanel();
 		
+		
 		/*
 		chooser.addDefault("Default Auto", new AutoStraight());
 		// chooser.addObject("My Auto", new MyAutoCommand());

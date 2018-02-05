@@ -15,7 +15,7 @@ public class DriveBase extends Subsystem {
 	public double lastTurn = 0;
     public double curve = 0.09;
     public static long startTime = System.currentTimeMillis();
-    public static int autoDuration = 50;
+    public static int autoDuration = 15;
     public static long autoDurationMilis = autoDuration*1000; 
     private ADIS16448_IMU gyro;
     
@@ -62,10 +62,10 @@ public class DriveBase extends Subsystem {
        double Kp = 0.03;
 
        public void autonomous() {
-    	   gyro.reset();
+//    	   gyro.reset();
            while (isAutonomous()) {
                double angle = gyro.getAngleZ(); // get current heading
-               System.out.println("angle= "+angle);
+              // System.out.println("angle= "+angle);
                the4Motors.arcadeDrive(-1.0, -angle*Kp); // drive towards heading 0
                Timer.delay(0.004);
            }
