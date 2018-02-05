@@ -1,9 +1,9 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) FIRST 2016. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------
+ Copyright (c) FIRST 2016. All Rights Reserved.                             
+ Open Source Software - may be modified and shared by FRC teams. The code   
+ must be accompanied by the FIRST BSD license file in the root directory of 
+ the project.                                                               
+----------------------------------------------------------------------------
 
 package com.analog.adis16448.frc;
 
@@ -25,9 +25,9 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 
-/**
+*//**
  * This class is for the ADIS16448 IMU that connects to the RoboRIO MXP port.
- */
+ *//*
 @SuppressWarnings("unused")
 public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable {
 	private static final double kCalibrationSampleTime = 3.0; // Calibration time in seconds
@@ -247,10 +247,10 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
   private Thread m_acquire_task;
   private Thread m_calculate_task;
 
-  /**
+  *//**
    * @param yaw_axis Which axis is Yaw
    * @param algorithm Use {@link #calculateComplementary} or {@link #calculateMadgwick} algorithm
-   */
+   *//*
   public ADIS16448_IMU(Axis yaw_axis, AHRSAlgorithm algorithm) {
     m_yaw_axis = yaw_axis;
     m_algorithm = algorithm;
@@ -331,23 +331,23 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
     setName("ADIS16448_IMU");
   }
 
-  /*
+  
    * Constructor assuming Complementary AHRS algorithm.
-   */
+   
   public ADIS16448_IMU(Axis yaw_axis) {
     this(yaw_axis, AHRSAlgorithm.kComplementary);
   }
 
-  /*
+  
    * Constructor assuming yaw axis is "Z" and Complementary AHRS algorithm.
-   */
+   
   public ADIS16448_IMU() {
     this(Axis.kZ, AHRSAlgorithm.kComplementary);
   }
 
-  /**
+  *//**
    * {@inheritDoc}
-   */
+   *//*
   @Override
   public void calibrate() {
     if (m_spi == null) return;
@@ -412,9 +412,9 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
     m_spi.write(buf, 2);
   }
 
-  /**
+  *//**
    * {@inheritDoc}
-   */
+   *//*
   public void reset() {
     synchronized (this) {
       m_integ_gyro_x = 0.0;
@@ -423,9 +423,9 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
     }
   }
 
-  /**
+  *//**
    * Delete (free) the spi port used for the IMU.
-   */
+   *//*
   @Override
   public void free() {
     m_freed.set(true);
@@ -480,14 +480,14 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
 		  }
 
 		  // DEBUG: Plot Sub-Array Data in Terminal
-		  /*System.out.println(ToUShort(data_subset[0], data_subset[1]) + "," + ToUShort(data_subset[2], data_subset[3]) + "," + 
+		  System.out.println(ToUShort(data_subset[0], data_subset[1]) + "," + ToUShort(data_subset[2], data_subset[3]) + "," + 
 		  ToUShort(data_subset[4], data_subset[5]) + "," + ToUShort(data_subset[6], data_subset[7]) + "," + ToUShort(data_subset[8], data_subset[9]) + "," 
 		  + ToUShort(data_subset[10], data_subset[11]) + "," +
 		  ToUShort(data_subset[12], data_subset[13]) + "," + ToUShort(data_subset[14], data_subset[15]) + "," 
 		  + ToUShort(data_subset[16], data_subset[17]) + "," +
 		  ToUShort(data_subset[18], data_subset[19]) + "," + ToUShort(data_subset[20], data_subset[21]) + "," 
 		  + ToUShort(data_subset[22], data_subset[23]) + "," +
-		  ToUShort(data_subset[24], data_subset[25]) + "," + ToUShort(data_subset[26], data_subset[27]));*/
+		  ToUShort(data_subset[24], data_subset[25]) + "," + ToUShort(data_subset[26], data_subset[27]));
 
 		  // Calculate CRC-16 on each data packet
 		  int calc_crc = 0x0000FFFF; // Starting word
@@ -528,9 +528,9 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
 			  temp = ToShort(data_subset[24], data_subset[25]) * kDegCPerLSB + kDegCOffset;
 			  			  
 			  // Print scaled data to terminal
-			  /*System.out.println(gyro_x + "," + gyro_y + "," + gyro_z + "," + accel_x + "," + accel_y + "," 
+			  System.out.println(gyro_x + "," + gyro_y + "," + gyro_z + "," + accel_x + "," + accel_y + "," 
 			  + accel_z + "," + mag_x + "," + mag_y + "," + mag_z + "," + baro + "," + temp + "," + "," 
-			  + ToUShort(data_subset[26], data_subset[27]));*/
+			  + ToUShort(data_subset[26], data_subset[27]));
 			  //System.out.println("---------------------"); // Frame divider (or else data looks like a mess)
 			  
 			  m_samples_mutex.lock();
@@ -1053,17 +1053,17 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
     }
   }
 
-  /**
+  *//**
    * {@inheritDoc}
-   */
+   *//*
   public double getAngle() {
     if (m_spi == null) return 0.0;
     return getYaw();
   }
 
-  /**
+  *//**
    * {@inheritDoc}
-   */
+   *//*
   public double getRate() {
     if (m_spi == null) return 0.0;
     return getRateZ();
@@ -1175,9 +1175,9 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
     m_tilt_comp_yaw = enabled;
   }
   
-  /**
+  *//**
    * {@inheritDoc}
-   */
+   *//*
   @Override
   public void initSendable(SendableBuilder builder) {
     builder.addDoubleProperty("Value", ()-> getAngle(), null);
@@ -1194,3 +1194,4 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, Sendable
   }
   
 }
+*/
