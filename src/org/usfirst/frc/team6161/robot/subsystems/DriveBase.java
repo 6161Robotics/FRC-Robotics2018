@@ -2,7 +2,7 @@ package org.usfirst.frc.team6161.robot.subsystems;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import org.usfirst.frc.team6161.robot.Constants; 
 
 import org.usfirst.frc.team6161.robot.RobotMap;
 import org.usfirst.frc.team6161.robot.Robot;
@@ -95,9 +95,19 @@ public class DriveBase extends Subsystem {
     public void SlowBackward(){
     	the4Motors.arcadeDrive((autoSpeed/2), 0);
     }
+    
+    public void turnRight() {
+    	the4Motors.arcadeDrive(0.0, Constants.RIGHT_TURN_ROTATION);
+    }
+    
+    public void turnLeft() {
+    	the4Motors.arcadeDrive(0.0, Constants.LEFT_TURN_ROTATION);
+    }    	
     public void Stop(){
     	the4Motors.arcadeDrive(0,0);
     }
+    
+    
     
     
     

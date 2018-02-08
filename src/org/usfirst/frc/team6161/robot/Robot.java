@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team6161.robot.commands.*;
+
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
@@ -52,7 +54,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		pdp = new PowerDistributionPanel();
 		
-		
+
 		/*
 		chooser.addDefault("Default Auto", new AutoStraight());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -61,6 +63,15 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("MidGearDeposit", new AutoMidGear());
 		SmartDashboard.putData("Auto MidGear mode", chooser);
 		*/
+		
+		// Add commands to show in Autonomous drop-down on Smart Dashboard
+/*		chooser.addObject("Old Auto", new AutoStraight());
+		chooser.addObject("Auto Start Left", new AutoStartLeft());
+		chooser.addObject("Auto Start Right", new AutoStartRight());
+		chooser.addObject("Just Turn Right", new AutoStartCenterGoRight());
+//		chooser.addObject("Auto Start Center Go Left", new AutoStartCenterGoLeft());
+		SmartDashboard.putData("Autonomous Scenarios", chooser);*/
+		
 
 		
 		driveBase.init();
@@ -93,6 +104,8 @@ public class Robot extends IterativeRobot {
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	*/
+		
+
 	}
 	
 	
@@ -128,7 +141,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
-		autonomousCommand = new AutoStraight();
+		autonomousCommand = new AutoStartCenterGoRight();
+		//autonomousCommand = new AutoStraight();
 		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
