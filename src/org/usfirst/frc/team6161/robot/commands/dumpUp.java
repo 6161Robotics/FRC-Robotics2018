@@ -7,35 +7,36 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveAutoLeftTurn extends Command {
-		private double timeout;
-    public DriveAutoLeftTurn(double autoFullTurningDuration) {
-     this.timeout = autoFullTurningDuration;
-    	requires(Robot.driveBase);
+public class dumpUp extends Command {
+
+    public dumpUp() {
+    	requires(Robot.dumpBase);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(timeout);
-    	Robot.driveBase.turnLeft();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.dumpBase.DumpUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveBase.Stop();
+    	Robot.dumpBase.DumpStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

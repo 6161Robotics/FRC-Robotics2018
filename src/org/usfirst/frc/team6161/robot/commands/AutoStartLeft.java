@@ -28,7 +28,7 @@ public class AutoStartLeft extends CommandGroup {
         // arm.
     	addSequential(new WaitCommand(Constants.AUTO_START_WAIT));
     	addSequential(new DriveAutoForward(Constants.AUTO_FULL_TRAVEL_DURATION));
-    	addSequential(new DriveAutoRightTurn(4));
+    	addSequential(new DriveAutoRightTurn(Constants.AUTO_FULL_TURNING_DURATION));
     	
     	//TODO: Deposit Box After
     }

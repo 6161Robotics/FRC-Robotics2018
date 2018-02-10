@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team6161.robot;
 
+import org.usfirst.frc.team6161.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -54,16 +56,21 @@ public class OI {
 		theJoystick = new Joystick(0);
 		
 		// TODO: Initialize buttons
-//		joyDumpDown = new JoystickButton(theJoystick, 3);
-//        joyDumpDown.whileHeld(new dumpDown());
-//        joyDumpUp = new JoystickButton(theJoystick, 4);
-//        joyDumpUp.whileHeld(new dumpUp());
+		joyDumpDown = new JoystickButton(theJoystick, 3);
+        joyDumpDown.whileHeld(new dumpDown());
+		
+        joyDumpUp = new JoystickButton(theJoystick, 4);
+        joyDumpUp.whileHeld(new dumpUp());
+		
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
+		
 //        joyClimbDown = new JoystickButton(theJoystick, 5);
 //        joyClimbDown.whileHeld(new climberDown());
+		
 //        joyRoombaOut = new JoystickButton(theJoystick, 2);
 //        joyRoombaOut.whileHeld(new roombaOut());
+		
 //        joyRoombaIn = new JoystickButton(theJoystick, 1);
 //        joyRoombaIn.whileHeld(new roombaIn());
         

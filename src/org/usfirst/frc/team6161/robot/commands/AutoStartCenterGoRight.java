@@ -28,7 +28,11 @@ public class AutoStartCenterGoRight extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new WaitCommand(Constants.AUTO_START_WAIT));
-    	addSequential(new DriveAutoRightTurn(0.9));
-    	addSequential(new DriveAutoForward(1));
+    	addSequential(new DriveAutoForward(Constants.AUTO_FIRST_HALF_TRAVEL_DURATION));
+    	addSequential(new DriveAutoRightTurn(Constants.AUTO_FULL_TURNING_DURATION));
+    	addSequential(new DriveAutoForward(Constants.AUTO_LATERAL_TRAVEL_DURATION));
+    	addSequential(new DriveAutoLeftTurn(Constants.AUTO_FULL_TURNING_DURATION));
+    	addSequential(new DriveAutoForward(Constants.AUTO_SECOND_HALF_TRAVEL_DURATION));
+    	//TODO Deposit Box
     }
 }

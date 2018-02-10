@@ -16,12 +16,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6161.robot.commands.*;
+import org.usfirst.frc.team6161.robot.subsystems.*;
 
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
 // TODO import org.usfirst.frc.team6161.robot.subsystems.AutoDrive;
-import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,11 +32,13 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
  * project.
  */
 public class Robot extends IterativeRobot {
-//	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+
+
+	//	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
-//	TODO is this necceary?	public static final AutoDrive autoDrive = new AutoDrive();
+//	TODO is this nessary?	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
-//	public static final dumpBase dumpBase = new dumpBase();
+	public static final dumpBase dumpBase = new dumpBase();
 //	public static final roombaBase roombaBase = new roombaBase();
 	public static OI oi;
 	
@@ -55,32 +58,24 @@ public class Robot extends IterativeRobot {
 		pdp = new PowerDistributionPanel();
 		
 
-		/*
+		// Add Commands to show in Autonomous drop-down on Smart Dashboard
+		SmartDashboard.putData("Autonomous Scenarios", chooser);
 		chooser.addDefault("Default Auto", new AutoStraight());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
-		
-		chooser.addObject("MidGearDeposit", new AutoMidGear());
-		SmartDashboard.putData("Auto MidGear mode", chooser);
-		*/
-		
-		// Add commands to show in Autonomous drop-down on Smart Dashboard
-/*		chooser.addObject("Old Auto", new AutoStraight());
 		chooser.addObject("Auto Start Left", new AutoStartLeft());
 		chooser.addObject("Auto Start Right", new AutoStartRight());
-		chooser.addObject("Just Turn Right", new AutoStartCenterGoRight());
-//		chooser.addObject("Auto Start Center Go Left", new AutoStartCenterGoLeft());
-		SmartDashboard.putData("Autonomous Scenarios", chooser);*/
-		
+		chooser.addObject("Auto Start Center Go Left", new AutoStartCenterGoLeft());
+		chooser.addObject("Auto Start Center Go Right", new AutoStartCenterGoRight());
 
+	
 		
 		driveBase.init();
 		
 		// TODO: Initialize other subsystems
 //		climberBase.init();
-//		dumpBase.init();
+		dumpBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
+		
 		
 		
 	}
@@ -106,6 +101,8 @@ public class Robot extends IterativeRobot {
 	*/
 		
 
+		
+
 	}
 	
 	
@@ -119,7 +116,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void disabledInit() {
-
+		//autonomousCommand.isCanceled();
 	}
 
 	@Override
@@ -141,8 +138,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
-		autonomousCommand = new AutoStartCenterGoRight();
-		//autonomousCommand = new AutoStraight();
+		//autonomousCommand = new AutoStartCenterGoLeft();
+		autonomousCommand = chooser.getSelected();
 		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
