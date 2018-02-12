@@ -57,10 +57,10 @@ public class OI {
 		
 		// TODO: Initialize buttons
 		joyDumpDown = new JoystickButton(theJoystick, 3);
-        joyDumpDown.whileHeld(new dumpDown());
+        joyDumpDown.whileHeld(new DumpDown());
 		
         joyDumpUp = new JoystickButton(theJoystick, 4);
-        joyDumpUp.whileHeld(new dumpUp());
+        joyDumpUp.whileHeld(new DumpUp());
 		
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());

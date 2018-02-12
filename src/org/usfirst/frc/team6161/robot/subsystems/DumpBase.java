@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 /**
  *
  */
-public class dumpBase extends Subsystem {
+public class DumpBase extends Subsystem {
 
 	public static final double dumpSpeed = 1;
 	

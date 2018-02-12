@@ -4,13 +4,15 @@ import org.usfirst.frc.team6161.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+
+
 /**
  *
  */
-public class dumpUp extends Command {
+public class DumpDown extends Command {
 
-    public dumpUp() {
-    	requires(Robot.dumpBase);
+    public DumpDown() {
+    	requires(Robot.DumpBase);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,7 +23,7 @@ public class dumpUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.dumpBase.DumpUp();
+    	Robot.DumpBase.DumpDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +33,7 @@ public class dumpUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.dumpBase.DumpStop();
+    	Robot.DumpBase.DumpStop();
     }
 
     // Called when another command which requires one or more of the same

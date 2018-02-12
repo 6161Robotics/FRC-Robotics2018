@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveBase driveBase = new DriveBase();
 //	TODO is this nessary?	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
-	public static final dumpBase dumpBase = new dumpBase();
+	public static final DumpBase DumpBase = new DumpBase();
 //	public static final roombaBase roombaBase = new roombaBase();
 	public static OI oi;
 	
@@ -59,20 +59,19 @@ public class Robot extends IterativeRobot {
 		
 
 		// Add Commands to show in Autonomous drop-down on Smart Dashboard
-		SmartDashboard.putData("Autonomous Scenarios", chooser);
 		chooser.addDefault("Default Auto", new AutoStraight());
 		chooser.addObject("Auto Start Left", new AutoStartLeft());
 		chooser.addObject("Auto Start Right", new AutoStartRight());
 		chooser.addObject("Auto Start Center Go Left", new AutoStartCenterGoLeft());
 		chooser.addObject("Auto Start Center Go Right", new AutoStartCenterGoRight());
-
+		SmartDashboard.putData("Autonomous Scenarios", chooser);
 	
 		
 		driveBase.init();
 		
 		// TODO: Initialize other subsystems
 //		climberBase.init();
-		dumpBase.init();
+		DumpBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
 		
