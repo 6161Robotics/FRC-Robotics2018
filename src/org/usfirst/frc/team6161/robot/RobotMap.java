@@ -35,8 +35,8 @@ public class RobotMap {
     public static SpeedController driveBaseLeftFront;
     public static SpeedController driveBaseLeftRear;
     public static DifferentialDrive driveBaseThe4Motors;
-    public static SpeedController dumpBaseDumpMotor;
-    public static SpeedController climberBaseclimbMotor;
+    public static SpeedController lifterBaseLifterMotor;
+    public static SpeedController climberBaseClimbMotor;
     public static SpeedController roombaBaseRoombaMotor;
     
     
@@ -76,10 +76,10 @@ public class RobotMap {
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearRight, true);
          rightSpeedController.setInverted(false);
          
-         dumpBaseDumpMotor = new Victor(5);
+         lifterBaseLifterMotor = new Victor(5);
 //         LiveWindow.addActuator("DumpBase", "DumpMotor", (Victor) dumpBaseDumpMotor);
          
-         climberBaseclimbMotor = new VictorSP(4);
+         climberBaseClimbMotor = new VictorSP(4);
 //         LiveWindow.addActuator("LiftBase", "LiftMotor", (VictorSP) climberBaseclimbMotor);
          
          // TODO: Get rid of this eventually since we do not need this functionality
