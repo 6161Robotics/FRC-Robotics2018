@@ -45,20 +45,20 @@ public class RobotMap {
     
     
     public static void init() {
-    	 driveBaseRightFront = new Spark(2);
+    	 driveBaseRightFront = new Spark(3);
 //         LiveWindow.addActuator("DriveBase", "RightFront", (Spark) driveBaseRightFront);
          
-         driveBaseRightRear = new Victor(3);
+         driveBaseRightRear = new Victor(2);
 //         LiveWindow.addActuator("DriveBase", "RightRear", (Spark) driveBaseRightRear);
 
          SpeedControllerGroup rightSpeedController = new SpeedControllerGroup(driveBaseRightFront, driveBaseRightRear);
          
          
          
-         driveBaseLeftFront = new Spark(0);
+         driveBaseLeftFront = new Spark(1);
 //         LiveWindow.addActuator("DriveBase", "LeftFront", (Spark) driveBaseLeftFront);
          
-         driveBaseLeftRear = new Victor(1);
+         driveBaseLeftRear = new Victor(0);
 //         LiveWindow.addActuator("DriveBase", "LeftRear", (Spark) driveBaseLeftRear);
   
          SpeedControllerGroup leftSpeedController = new SpeedControllerGroup(driveBaseLeftFront, driveBaseLeftRear);
@@ -81,13 +81,13 @@ public class RobotMap {
          rightSpeedController.setInverted(false);
          
          sliderBaseVerticalMotor = new Spark(5);
-         sliderBaseHorizontalMotor = new Spark(7);
+         sliderBaseHorizontalMotor = new Spark(4);
          
-         armsBaseRightMotor = new Spark(4);
-         armsBaseLeftMotor = new Spark(8);
+         armsBaseRightMotor = new Spark(7);
+         armsBaseLeftMotor = new Spark(6);
          
          // TODO: Get rid of this eventually since we do not need this functionality
-         dumpBaseDumpMotor = new Victor(6);
+     //    dumpBaseDumpMotor = new Victor(6);
 //         LiveWindow.addActuator("RoombaBase", "RoombaMotor", (Victor) roombaBaseRoombaMotor);
     }
 }

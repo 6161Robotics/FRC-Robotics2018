@@ -38,7 +38,9 @@ public class Robot extends IterativeRobot {
 	public static final DriveBase driveBase = new DriveBase();
 //	TODO is this nessary?	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
+	public static final SliderBase SliderBase = new SliderBase();
 	public static final DumpBase DumpBase = new DumpBase();
+	public static final ArmsBase ArmsBase = new ArmsBase();
 //	public static final roombaBase roombaBase = new roombaBase();
 	public static OI oi;
 	
@@ -72,6 +74,8 @@ public class Robot extends IterativeRobot {
 		// TODO: Initialize other subsystems
 //		climberBase.init();
 		DumpBase.init();
+		SliderBase.init();
+		ArmsBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
 		
