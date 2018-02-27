@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team6161.robot;
 
+import org.usfirst.frc.team6161.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -42,28 +44,49 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public JoystickButton joyRoombaIn;
-	public JoystickButton joyRoombaOut;
+	public JoystickButton joySlideUp;
+	public JoystickButton joySliderDown;
 	public JoystickButton joyClimbUp;
 	public JoystickButton joyClimbDown;
-	public JoystickButton joyDumpUp;
-	public JoystickButton joyDumpDown;
+	public JoystickButton joySlideForwards;
+	public JoystickButton joySlideBackwards;
+	public JoystickButton joySlideDownwards;
+	public JoystickButton joySlideUpwards;
+	public JoystickButton joyIntake;
+	public JoystickButton joyOuttake;
+
 	public Joystick theJoystick;
 
 	public OI() {
 		theJoystick = new Joystick(0);
 		
 		// TODO: Initialize buttons
-//		joyDumpDown = new JoystickButton(theJoystick, 3);
-//        joyDumpDown.whileHeld(new dumpDown());
-//        joyDumpUp = new JoystickButton(theJoystick, 4);
-//        joyDumpUp.whileHeld(new dumpUp());
+		joySlideBackwards = new JoystickButton(theJoystick, 4);
+        joySlideBackwards.whileHeld(new SlideBackwards());
+		
+        joySlideForwards = new JoystickButton(theJoystick, 3);
+        joySlideForwards.whileHeld(new SlideForwards());
+        
+        joySlideDownwards = new JoystickButton(theJoystick, 5);
+        joySlideDownwards.whileHeld(new SlideDownwards());
+        
+        joySlideUpwards = new JoystickButton(theJoystick, 6);
+        joySlideUpwards.whileHeld(new SlideUpwards());
+		
+        joyIntake = new JoystickButton(theJoystick, 7);
+        joyIntake.whileHeld(new Intake());
+        
+        joyOuttake = new JoystickButton(theJoystick, 8);
+        joyOuttake.whileHeld(new Outtake());
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
+		
 //        joyClimbDown = new JoystickButton(theJoystick, 5);
 //        joyClimbDown.whileHeld(new climberDown());
+		
 //        joyRoombaOut = new JoystickButton(theJoystick, 2);
 //        joyRoombaOut.whileHeld(new roombaOut());
+		
 //        joyRoombaIn = new JoystickButton(theJoystick, 1);
 //        joyRoombaIn.whileHeld(new roombaIn());
         

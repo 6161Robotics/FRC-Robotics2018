@@ -7,19 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveAutoForward extends Command {
-    	private double timeout;
-   	 public DriveAutoForward(double autoFullTravelDuration) {
-   		 this.timeout = autoFullTravelDuration;
-   	    	requires(Robot.driveBase);
-
+public class DriveAutoLeftTurn extends Command {
+		private double timeout;
+    public DriveAutoLeftTurn(double autoFullTurningDuration) {
+     this.timeout = autoFullTurningDuration;
+    	requires(Robot.driveBase);
     }
-
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	setTimeout(timeout);
-    	Robot.driveBase.AutoForward();
+    	Robot.driveBase.turnLeft();
     }
 
     // Called repeatedly when this Command is scheduled to run

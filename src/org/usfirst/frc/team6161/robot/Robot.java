@@ -15,11 +15,14 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.analog.adis16448.frc.ADIS16448_IMU;
+import org.usfirst.frc.team6161.robot.commands.*;
+import org.usfirst.frc.team6161.robot.subsystems.*;
+
+//import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.commands.AutoStraight;
 // TODO import org.usfirst.frc.team6161.robot.subsystems.AutoDrive;
-import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,11 +32,15 @@ import org.usfirst.frc.team6161.robot.subsystems.DriveBase;
  * project.
  */
 public class Robot extends IterativeRobot {
-	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
+
+
+	//	public static final ADIS16448_IMU imu = new ADIS16448_IMU();
 	public static final DriveBase driveBase = new DriveBase();
-//	TODO is this necceary?	public static final AutoDrive autoDrive = new AutoDrive();
+//	TODO is this nessary?	public static final AutoDrive autoDrive = new AutoDrive();
 //	public static final climberBase climberBase = new climberBase();
-//	public static final dumpBase dumpBase = new dumpBase();
+	public static final SliderBase SliderBase = new SliderBase();
+	public static final DumpBase DumpBase = new DumpBase();
+	public static final ArmsBase ArmsBase = new ArmsBase();
 //	public static final roombaBase roombaBase = new roombaBase();
 	public static OI oi;
 	
@@ -52,24 +59,26 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		pdp = new PowerDistributionPanel();
 		
-		
-		/*
-		chooser.addDefault("Default Auto", new AutoStraight());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
-		
-		chooser.addObject("MidGearDeposit", new AutoMidGear());
-		SmartDashboard.putData("Auto MidGear mode", chooser);
-		*/
 
+		// Add Commands to show in Autonomous drop-down on Smart Dashboard
+		chooser.addDefault("Default Auto", new AutoStraight());
+		chooser.addObject("Auto Start Left", new AutoStartLeft());
+		chooser.addObject("Auto Start Right", new AutoStartRight());
+		chooser.addObject("Auto Start Center Go Left", new AutoStartCenterGoLeft());
+		chooser.addObject("Auto Start Center Go Right", new AutoStartCenterGoRight());
+		SmartDashboard.putData("Autonomous Scenarios", chooser);
+	
 		
 		driveBase.init();
 		
 		// TODO: Initialize other subsystems
 //		climberBase.init();
-//		dumpBase.init();
+		DumpBase.init();
+		SliderBase.init();
+		ArmsBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
+		
 		
 		
 	}
@@ -77,7 +86,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotPeriodic() {
 		
-	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+/*	    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
 	    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
 	    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
 
@@ -92,7 +101,11 @@ public class Robot extends IterativeRobot {
 	    
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
-	
+	*/
+		
+
+		
+
 	}
 	
 	
@@ -106,7 +119,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void disabledInit() {
-
+		//autonomousCommand.isCanceled();
 	}
 
 	@Override
@@ -128,7 +141,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
-		autonomousCommand = new AutoStraight();
+		//autonomousCommand = new AutoStartCenterGoLeft();
+		autonomousCommand = chooser.getSelected();
 		
 		if (autonomousCommand != null)
 			autonomousCommand.start();
@@ -147,7 +161,7 @@ public class Robot extends IterativeRobot {
 		
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		imu.reset();
+//		imu.reset();
 	}
 
 	/**

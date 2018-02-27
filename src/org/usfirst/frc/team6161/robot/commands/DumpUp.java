@@ -7,37 +7,36 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveAutoForward extends Command {
-    	private double timeout;
-   	 public DriveAutoForward(double autoFullTravelDuration) {
-   		 this.timeout = autoFullTravelDuration;
-   	    	requires(Robot.driveBase);
+public class DumpUp extends Command {
 
+    public DumpUp() {
+    	requires(Robot.DumpBase);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
-
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(timeout);
-    	Robot.driveBase.AutoForward();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.DumpBase.DumpUp();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveBase.Stop();
+    	Robot.DumpBase.DumpStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
