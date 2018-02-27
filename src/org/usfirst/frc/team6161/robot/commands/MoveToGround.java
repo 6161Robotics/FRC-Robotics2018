@@ -1,12 +1,9 @@
 package org.usfirst.frc.team6161.robot.commands;
 
-
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-
-public class Intake extends CommandGroup {
-	 public Intake() {
+public class MoveToGround extends CommandGroup {
+	 public MoveToGround() {
 	        // Add Commands here:
 	        // e.g. addSequential(new Command1());
 	        //      addSequential(new Command2());
@@ -23,8 +20,8 @@ public class Intake extends CommandGroup {
 	        // e.g. if Command1 requires chassis, and Command2 requires arm,
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
-	    	addParallel(new RightArmIntake());
-	    	addSequential(new LeftArmIntake());
+		 	addSequential(new ());
+	    	addSequential(new ());
 	    
 	    }
 }

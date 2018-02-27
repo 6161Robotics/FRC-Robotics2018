@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class SliderBase extends Subsystem {
 
 	public static final double VerticalSpeed = 0.5;
-	public static final double HorzontalSpeed = 0.25;
+	public static final double HorzontalSpeed = 0.5;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -38,10 +38,10 @@ public class SliderBase extends Subsystem {
     
     
     
-    public void HorzontalUp(){
+    public void HorzontalForward(){
     	HorzontalMotor.set(HorzontalSpeed);
     }
-    public void HorzontalDown(){
+    public void HorzontalBackward(){
     	HorzontalMotor.set(-HorzontalSpeed);
     }
     public void HorzontalStop(){
