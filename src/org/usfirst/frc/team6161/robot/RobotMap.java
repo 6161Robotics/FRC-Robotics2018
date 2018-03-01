@@ -44,20 +44,20 @@ public class RobotMap {
     
     
     public static void init() {
-    	 driveBaseRightFront = new Spark(3);
+    	 driveBaseRightFront = new Spark(1);
 //         LiveWindow.addActuator("DriveBase", "RightFront", (Spark) driveBaseRightFront);
          
-         driveBaseRightRear = new Victor(2);
+         driveBaseRightRear = new Victor(0);
 //         LiveWindow.addActuator("DriveBase", "RightRear", (Spark) driveBaseRightRear);
 
          SpeedControllerGroup rightSpeedController = new SpeedControllerGroup(driveBaseRightFront, driveBaseRightRear);
          
          
          
-         driveBaseLeftFront = new Spark(1);
+         driveBaseLeftFront = new Spark(3);
 //         LiveWindow.addActuator("DriveBase", "LeftFront", (Spark) driveBaseLeftFront);
          
-         driveBaseLeftRear = new Victor(0);
+         driveBaseLeftRear = new Victor(2);
 //         LiveWindow.addActuator("DriveBase", "LeftRear", (Spark) driveBaseLeftRear);
   
          SpeedControllerGroup leftSpeedController = new SpeedControllerGroup(driveBaseLeftFront, driveBaseLeftRear);
@@ -73,11 +73,11 @@ public class RobotMap {
          
 //         driveBaseThe4Motors. setInvertedMotor(DifferentialDrive.MotorType.kFrontLeft, true);
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearLeft, true);
-         leftSpeedController.setInverted(false);
+         leftSpeedController.setInverted(true);
          
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kFrontRight, true);
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearRight, true);
-         rightSpeedController.setInverted(false);
+         rightSpeedController.setInverted(true);
          
          sliderBaseVerticalMotor = new Spark(5);
          sliderBaseHorizontalMotor = new Spark(4);
