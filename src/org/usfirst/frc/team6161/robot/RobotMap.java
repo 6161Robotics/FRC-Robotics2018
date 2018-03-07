@@ -73,11 +73,11 @@ public class RobotMap {
          
 //         driveBaseThe4Motors. setInvertedMotor(DifferentialDrive.MotorType.kFrontLeft, true);
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearLeft, true);
-         leftSpeedController.setInverted(true);
+         leftSpeedController.setInverted(false);
          
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kFrontRight, true);
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearRight, true);
-         rightSpeedController.setInverted(true);
+         rightSpeedController.setInverted(false);
          
          sliderBaseVerticalMotor = new Spark(5);
          sliderBaseHorizontalMotor = new Spark(4);

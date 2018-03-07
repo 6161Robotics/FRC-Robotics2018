@@ -62,16 +62,16 @@ public class OI {
 		
 		// TODO: Initialize buttons
 		joySlideBackwards = new JoystickButton(theJoystick, 3);
-        joySlideBackwards.whileHeld(new SlideBackwards());
+        joySlideBackwards.whileHeld(new SlideBackwards(0.1));
 		
         joySlideForwards = new JoystickButton(theJoystick, 1);
-        joySlideForwards.whileHeld(new SlideForwards());
+        joySlideForwards.whileHeld(new SlideForwards(0.1));  
         
         joySlideDownwards = new JoystickButton(theJoystick, 4);
-        joySlideDownwards.whileHeld(new SlideDownwards());
+        joySlideDownwards.whileHeld(new MoveToSwitch());
         
         joySlideUpwards = new JoystickButton(theJoystick, 2);
-        joySlideUpwards.whileHeld(new SlideUpwards());
+        joySlideUpwards.whileHeld(new MoveToGround());
 		
         joyIntake = new JoystickButton(theJoystick, 6);
         joyIntake.whileHeld(new Intake());
