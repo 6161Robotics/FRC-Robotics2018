@@ -1,13 +1,16 @@
 package org.usfirst.frc.team6161.robot.commands;
 
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class MoveToGround extends CommandGroup {
-	 public MoveToGround() {
+public class MoveToSafetyFromSwitch extends CommandGroup {
+
+	 public MoveToSafetyFromSwitch() {
 	        // Add Commands here:
 	        // e.g. addSequential(new Command1());
 	        //      addSequential(new Command2());
 	        // these will run in order.
+	         
 
 	        // To run multiple commands at the same time,
 	        // use addParallel()
@@ -20,8 +23,13 @@ public class MoveToGround extends CommandGroup {
 	        // e.g. if Command1 requires chassis, and Command2 requires arm,
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
-		 	addSequential(new SlideDownwards(0.5));
-	    	addSequential(new SlideForwards(0.5)); 
+	    	// If at Switch
+	    	addSequential(new SlideDownwards(0.5));
+	    	addSequential(new SlideBackwards(0.5));
 	    
 	    }
+	
+	
 }
+
+
