@@ -15,11 +15,16 @@ public class Constants {
 	public static final double AUTO_FIRST_HALF_TRAVEL_DURATION = 1.0;
 	
 	// Travel time for center starting robots after making first turn
-	public static final double AUTO_LATERAL_TRAVEL_DURATION = 1.0;
+	public static final double AUTO_CENTER_LATERAL_TRAVEL_DURATION = 1.0;
 	
 	// Second half of travel time form auto start to switch (used by a center starting robot)
 	public static final double AUTO_SECOND_HALF_TRAVEL_DURATION = 1.5;
 	
+	//Stating from the sides and need to pass the switch to safely get onto the other side (without colliding with center robot)
+	public static final double AUTO_PASS_SWITCH_TRAVEL_DURATION = 2;
+	
+	//Passed the switch and now need to get to the other side
+	public static final double AUTO_LATERAL_TRAVEL_DURATION = 2;
 	
 	
 	// Turn rotations

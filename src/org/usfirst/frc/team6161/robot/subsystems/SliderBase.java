@@ -39,10 +39,10 @@ public class SliderBase extends Subsystem {
     
     
     public void HorzontalForward(){
-    	HorzontalMotor.set(HorzontalSpeed);
+    	HorzontalMotor.set(-HorzontalSpeed);
     }
     public void HorzontalBackward(){
-    	HorzontalMotor.set(-HorzontalSpeed);
+    	HorzontalMotor.set(HorzontalSpeed);
     }
     public void HorzontalStop(){
     	HorzontalMotor.set(0);

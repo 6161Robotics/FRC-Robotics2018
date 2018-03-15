@@ -1,4 +1,4 @@
-package org.usfirst.frc.team6161.robot.commands;
+package org.usfirst.frc.team6161.robot.commands.auto;
 
 import org.usfirst.frc.team6161.robot.Constants;
 
@@ -30,9 +30,10 @@ public class AutoStartCenterGoRight extends CommandGroup {
     	addSequential(new WaitCommand(Constants.AUTO_START_WAIT));
     	addSequential(new DriveAutoForward(Constants.AUTO_FIRST_HALF_TRAVEL_DURATION));
     	addSequential(new DriveAutoRightTurn(Constants.AUTO_FULL_TURNING_DURATION));
-    	addSequential(new DriveAutoForward(Constants.AUTO_LATERAL_TRAVEL_DURATION));
+    	addSequential(new DriveAutoForward(Constants.AUTO_CENTER_LATERAL_TRAVEL_DURATION));
     	addSequential(new DriveAutoLeftTurn(Constants.AUTO_FULL_TURNING_DURATION));
     	addSequential(new DriveAutoForward(Constants.AUTO_SECOND_HALF_TRAVEL_DURATION));
-    	//TODO Deposit Box
+    	addSequential(new DriveAutoOuttake());
+
     }
 }

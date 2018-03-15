@@ -1,4 +1,4 @@
-package org.usfirst.frc.team6161.robot.commands;
+package org.usfirst.frc.team6161.robot.commands.auto;
 
 import org.usfirst.frc.team6161.robot.Robot;
 
@@ -7,17 +7,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveAutoLeftTurn extends Command {
+public class DriveAutoRightTurn extends Command {
 		private double timeout;
-    public DriveAutoLeftTurn(double autoFullTurningDuration) {
-     this.timeout = autoFullTurningDuration;
+    public DriveAutoRightTurn(double autoFullTurningDuration) {
+    	this.timeout = autoFullTurningDuration;   
     	requires(Robot.driveBase);
     }
 
-    // Called just before this Command runs the first time
+
+	// Called just before this Command runs the first time
     protected void initialize() {
     	setTimeout(timeout);
-    	Robot.driveBase.turnLeft();
+    	Robot.driveBase.turnRight();
     }
 
     // Called repeatedly when this Command is scheduled to run

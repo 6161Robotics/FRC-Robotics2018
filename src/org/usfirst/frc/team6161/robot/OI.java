@@ -44,8 +44,7 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public JoystickButton joySlideUp;
-	public JoystickButton joySliderDown;
+
 	public JoystickButton joyClimbUp;
 	public JoystickButton joyClimbDown;
 	public JoystickButton joySlideForwards;
@@ -60,24 +59,24 @@ public class OI {
 	public OI() {
 		theJoystick = new Joystick(0);
 		
-		// TODO: Initialize buttons
-		joySlideBackwards = new JoystickButton(theJoystick, 3);
-        joySlideBackwards.whileHeld(new SlideBackwards(0.1));
+
+		joySlideBackwards = new JoystickButton(theJoystick, 1);
+        joySlideBackwards.whileHeld(new SlideBackwards(0.2));
 		
-        joySlideForwards = new JoystickButton(theJoystick, 1);
-        joySlideForwards.whileHeld(new SlideForwards(0.1));  
+        joySlideForwards = new JoystickButton(theJoystick, 3);
+        joySlideForwards.whileHeld(new SlideForwards(0.2));  
         
-        joySlideDownwards = new JoystickButton(theJoystick, 4);
-        joySlideDownwards.whileHeld(new MoveToSwitch());
+        joySlideUpwards = new JoystickButton(theJoystick, 4);
+        joySlideUpwards.whileHeld(new SlideUpwards(0.2));
         
-        joySlideUpwards = new JoystickButton(theJoystick, 2);
-        joySlideUpwards.whileHeld(new MoveToGround());
+        joySlideDownwards = new JoystickButton(theJoystick, 2);
+        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
 		
         joyIntake = new JoystickButton(theJoystick, 6);
-        joyIntake.whileHeld(new Intake());
+        joyIntake.whileHeld(new Intake(0.2));
         
         joyOuttake = new JoystickButton(theJoystick, 5);
-        joyOuttake.whileHeld(new Outtake());
+        joyOuttake.whileHeld(new Outtake(0.2));
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
 		
