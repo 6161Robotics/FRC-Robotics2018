@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
@@ -80,7 +81,7 @@ public class RobotMap {
          rightSpeedController.setInverted(false);
          
          sliderBaseVerticalMotor = new Spark(5);
-         sliderBaseHorizontalMotor = new Spark(4);
+         sliderBaseHorizontalMotor = new VictorSP(4);
          
          armsBaseRightMotor = new Spark(7);
          armsBaseLeftMotor = new Spark(6);
