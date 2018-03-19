@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -51,11 +52,11 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
-	DigitalInput topVerticalLimitSwitch = new DigitalInput(1);
-	DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
+	public static DigitalInput topVerticalLimitSwitch;
+	public static DigitalInput botVerticalLimitSwitch;
 	
-	DigitalInput frontHorizontalLimitSwitch = new DigitalInput(3);
-	DigitalInput rearHorizontalLimitSwitch = new DigitalInput(4);
+	public static DigitalInput frontHorizontalLimitSwitch;
+	public static DigitalInput rearHorizontalLimitSwitch;
 	
 
 	
@@ -87,7 +88,11 @@ public class Robot extends IterativeRobot {
 //		roombaBase.init();
 		// call other subsystem inits here
 		
+		topVerticalLimitSwitch = new DigitalInput(1);
+		botVerticalLimitSwitch = new DigitalInput(2);
 		
+		frontHorizontalLimitSwitch = new DigitalInput(3);
+		rearHorizontalLimitSwitch = new DigitalInput(4);
 		
 	}
 
@@ -117,7 +122,7 @@ public class Robot extends IterativeRobot {
 		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
 		
 		if (topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
-            upButton = false;
+            upButton.setEnabled(false);
             downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		}
         else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is pressed, we want to keep the values between 0 and 1
@@ -206,7 +211,22 @@ public class Robot extends IterativeRobot {
 		
 		Robot.driveBase.drivewithJoystick();
 		
-
+		while (topVerticalLimitSwitch.get()) {
+			Timer.delay(5);
+		}
+		
+		while (botVerticalLimitSwitch.get()) {
+			Timer.delay(5);
+		}
+		
+		while (frontHorizontalLimitSwitch.get()) {
+			Timer.delay(5);
+		}
+		
+		while (rearHorizontalLimitSwitch.get()) {
+			Timer.delay(5);
+		}
+		
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||
 //	    		pdp.getCurrent(1) > 60.0 ||

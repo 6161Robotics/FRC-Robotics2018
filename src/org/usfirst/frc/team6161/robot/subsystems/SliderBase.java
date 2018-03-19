@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6161.robot.subsystems;
 
+import org.usfirst.frc.team6161.robot.Robot;
 import org.usfirst.frc.team6161.robot.RobotMap;
 
 
@@ -47,4 +48,16 @@ public class SliderBase extends Subsystem {
     public void HorzontalStop(){
     	HorzontalMotor.set(0);
     }
-}
+    
+    
+    
+/*    public void TopVerticalSwitchSet(){
+    	if (Robot.topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
+    		
+		}
+    	else() {
+    	
+		
+    	}*/
+    }
+
