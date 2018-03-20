@@ -121,11 +121,11 @@ public class Robot extends IterativeRobot {
 		boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
 		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
 		
-		if (topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
+		if (topVerticalLimitSwitch.get()) { // If the top limit switch is activated, we want to prevent Upwards button from being used
             upButton.setEnabled(false);
             downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		}
-        else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is pressed, we want to keep the values between 0 and 1
+        else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is activated, we want to prevent Downwards button from being used
             downButton = false;
             upButton = Robot.oi.getTheJoystick().getRawButton(4);
         }
@@ -133,11 +133,11 @@ public class Robot extends IterativeRobot {
         
         
         
-		if (frontHorizontalLimitSwitch.get()) {// If the front limit switch is pressed, we want to keep the values between -1 and 0
+		if (frontHorizontalLimitSwitch.get()) {// If the front limit switch is activated, we want to prevent Forwards button from being used
             forwardButton = false;
             backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
 		}
-        else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is pressed, we want to keep the values between 0 and 1
+        else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is activated, we want to prevent Backwards button from being used
             backwardButton = false;
             forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
         }
