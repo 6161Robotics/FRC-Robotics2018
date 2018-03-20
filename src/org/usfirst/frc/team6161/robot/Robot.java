@@ -115,7 +115,7 @@ public class Robot extends IterativeRobot {
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	*/
-		boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
+	/*	boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
 		boolean downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		
 		boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
@@ -142,7 +142,7 @@ public class Robot extends IterativeRobot {
             forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
         }
 //        RobotMap.sliderBaseHorizontalMotor.set(output);
-		
+		*/
 
 	}
 	
