@@ -51,14 +51,8 @@ public class SliderBase extends Subsystem {
     
     
     
-    public void TopVerticalSwitchSet(){
-    	if (Robot.topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
-    		
-		}
-    	else() {
+
     	
-		
-    	}
     }
-}
+
 
