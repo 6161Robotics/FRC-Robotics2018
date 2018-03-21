@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 
 public class Intake extends CommandGroup {
-	 public Intake(double d) {
+	 public Intake() {
 	        // Add Commands here:
 	        // e.g. addSequential(new Command1());
 	        //      addSequential(new Command2());
@@ -24,7 +24,7 @@ public class Intake extends CommandGroup {
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
 	    	addParallel(new RightArmIntake());
-	    	addSequential(new LeftArmIntake());
+	    	addParallel(new LeftArmIntake());
 	    
 	    }
 }

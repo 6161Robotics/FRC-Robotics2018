@@ -3,7 +3,7 @@ package org.usfirst.frc.team6161.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class Outtake extends CommandGroup{
-	 public Outtake(double d) {
+	 public Outtake() {
 	        // Add Commands here:
 	        // e.g. addSequential(new Command1());
 	        //      addSequential(new Command2());
@@ -21,7 +21,7 @@ public class Outtake extends CommandGroup{
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
 	    	addParallel(new RightArmOuttake());
-	    	addSequential(new LeftArmOuttake());
+	    	addParallel(new LeftArmOuttake());
 	    
 	    }
 }

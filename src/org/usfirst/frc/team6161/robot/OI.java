@@ -73,10 +73,10 @@ public class OI {
         joySlideDownwards.whileHeld(new SlideDownwards(0.2));
 		
         joyIntake = new JoystickButton(theJoystick, 6);
-        joyIntake.whileHeld(new Intake(0.2));
+        joyIntake.whileHeld(new Intake());
         
         joyOuttake = new JoystickButton(theJoystick, 5);
-        joyOuttake.whileHeld(new Outtake(0.2));
+        joyOuttake.whileHeld(new Outtake());
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
 		
