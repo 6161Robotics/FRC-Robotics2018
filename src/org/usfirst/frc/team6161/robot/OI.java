@@ -7,8 +7,9 @@
 
 package org.usfirst.frc.team6161.robot;
 
-import org.usfirst.frc.team6161.robot.commands.*;
 
+import org.usfirst.frc.team6161.robot.Gamepad;
+import org.usfirst.frc.team6161.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -51,8 +52,8 @@ public class OI {
 	public JoystickButton joySlideBackwards;
 	public JoystickButton joySlideDownwards;
 	public JoystickButton joySlideUpwards;
-	public JoystickButton joyIntake;
-	public JoystickButton joyOuttake;
+	public AxisButton joyIntake;
+	public AxisButton joyOuttake;
 
 	public Joystick theJoystick;
 
@@ -72,10 +73,10 @@ public class OI {
         joySlideDownwards = new JoystickButton(theJoystick, 2);
         joySlideDownwards.whileHeld(new SlideDownwards(0.2));
 		
-        joyIntake = new JoystickButton(theJoystick, 6);
+        joyIntake = new AxisButton(theJoystick, Gamepad.Axes.RIGHT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyIntake.whileHeld(new Intake());
         
-        joyOuttake = new JoystickButton(theJoystick, 5);
+        joyOuttake = new AxisButton(theJoystick, Gamepad.Axes.LEFT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyOuttake.whileHeld(new Outtake());
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
@@ -90,6 +91,10 @@ public class OI {
 //        joyRoombaIn.whileHeld(new roombaIn());
         
 	}
+
+
+
+
 	//a method for the joystick
 	public Joystick getTheJoystick() {
         return theJoystick;
