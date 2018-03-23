@@ -199,7 +199,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		Robot.driveBase.drivewithJoystick();
-		
+		System.out.println("update");
+		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
 
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||

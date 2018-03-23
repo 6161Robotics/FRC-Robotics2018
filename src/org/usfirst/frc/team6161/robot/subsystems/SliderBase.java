@@ -17,18 +17,18 @@ public class SliderBase extends Subsystem {
 	private SpeedController VerticalMotor;
 	private SpeedController HorzontalMotor;
 	
-	DigitalInput topVerticalLimitSwitch = new DigitalInput(1);
-	DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
+	DigitalInput topVerticalLimitSwitch = new DigitalInput(2);
+	DigitalInput botVerticalLimitSwitch = new DigitalInput(3);
 	
-	DigitalInput frontHorizontalLimitSwitch = new DigitalInput(11);
-	DigitalInput rearHorizontalLimitSwitch = new DigitalInput(13);
+	public DigitalInput frontHorizontalLimitSwitch = new DigitalInput(0);
+	public DigitalInput rearHorizontalLimitSwitch = new DigitalInput(1);
+	
 	
 	
 	public void init(){
 		VerticalMotor = RobotMap.sliderBaseVerticalMotor;
 		HorzontalMotor = RobotMap.sliderBaseHorizontalMotor;
-		
-		 
+		SmartDashboard.putBoolean("Front HE sensor", frontHorizontalLimitSwitch.get());
 	}
 	
     public void initDefaultCommand() {
@@ -36,10 +36,22 @@ public class SliderBase extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public boolean isAtTop(){
-    	return !topVerticalLimitSwitch.get();
+    public boolean isAtFront(){
+    	return !frontHorizontalLimitSwitch.get();
  //   	return false;
     }
+    
+    public boolean isAtRear(){
+    	return !rearHorizontalLimitSwitch.get();
+    }
+    public boolean isAtTop(){
+    	return !topVerticalLimitSwitch.get();
+    }
+    
+   public boolean isAtBot(){
+	   return !botVerticalLimitSwitch.get();
+   }
+    
     public void VerticalUp(){
    		VerticalMotor.set(VerticalSpeed);
     	
@@ -57,6 +69,8 @@ public class SliderBase extends Subsystem {
     
     
     public void HorzontalForward(){
+    	System.out.println("update");
+    	SmartDashboard.putBoolean("Front HE sensor", frontHorizontalLimitSwitch.get());
     	HorzontalMotor.set(-HorzontalSpeed);
     }
     public void HorzontalBackward(){
