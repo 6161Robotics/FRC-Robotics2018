@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SliderBase extends Subsystem {
 
-	public static final double VerticalSpeed = 0.75;
-	public static final double HorzontalSpeed = 0.75;
+	public static final double VerticalSpeed = 1;
+	public static final double HorzontalSpeed = .9;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
 	private SpeedController VerticalMotor;
 	private SpeedController HorzontalMotor;
 	
-	DigitalInput topVerticalLimitSwitch = new DigitalInput(2);
-	DigitalInput botVerticalLimitSwitch = new DigitalInput(3);
+	DigitalInput topVerticalLimitSwitch = new DigitalInput(3);
+	DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
 	
 	public DigitalInput frontHorizontalLimitSwitch = new DigitalInput(0);
 	public DigitalInput rearHorizontalLimitSwitch = new DigitalInput(1);
