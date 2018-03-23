@@ -21,37 +21,28 @@ public class ArmsBase extends Subsystem {
 	public void init(){
 		RightMotor = RobotMap.armsBaseRightMotor;
 		LeftMotor = RobotMap.armsBaseLeftMotor;
+		
+		
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void RightIntake(){
-    	RightMotor.set(FullRightSpeed);
-    }
-    public void RightOuttake(){
+    public void Intake(){
     	RightMotor.set(-FullRightSpeed);
-    }
-    public void RightStay(){
-    	RightMotor.set(ReducedRightSpeed);
-    }
-    public void RightStop(){
-    	RightMotor.set(0);
-    }
-    
-    
-    
-    public void LeftIntake(){
     	LeftMotor.set(FullLeftSpeed);
     }
-    public void LeftOuttake(){
+    public void Outtake(){
+    	RightMotor.set(FullRightSpeed);
     	LeftMotor.set(-FullLeftSpeed);
     }
-    public void LeftStay(){
+    public void Stay(){
+    	RightMotor.set(ReducedRightSpeed);
     	LeftMotor.set(ReducedLeftSpeed);
     }
-    public void LeftStop(){
+    public void ArmStop(){
+    	RightMotor.set(0);
     	LeftMotor.set(0);
     }
 }

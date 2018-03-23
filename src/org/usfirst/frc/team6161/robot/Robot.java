@@ -50,12 +50,6 @@ public class Robot extends IterativeRobot {
 	PowerDistributionPanel pdp; 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
-	DigitalInput topVerticalLimitSwitch = new DigitalInput(1);
-	DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
-	
-	DigitalInput frontHorizontalLimitSwitch = new DigitalInput(3);
-	DigitalInput rearHorizontalLimitSwitch = new DigitalInput(4);
 	
 
 	
@@ -110,13 +104,13 @@ public class Robot extends IterativeRobot {
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	*/
-		boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
+/*		boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
 		boolean downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		
 		boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
+		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);*/
 		
-		if (topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
+/*		if (topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
             upButton = false;
             downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		}
@@ -135,7 +129,7 @@ public class Robot extends IterativeRobot {
         else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is pressed, we want to keep the values between 0 and 1
             backwardButton = false;
             forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-        }
+        }*/
 //        RobotMap.sliderBaseHorizontalMotor.set(output);
 		
 
