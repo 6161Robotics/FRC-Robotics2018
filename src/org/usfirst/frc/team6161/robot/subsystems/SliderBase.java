@@ -1,5 +1,6 @@
 package org.usfirst.frc.team6161.robot.subsystems;
 
+import org.usfirst.frc.team6161.robot.Robot;
 import org.usfirst.frc.team6161.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -76,4 +77,11 @@ public class SliderBase extends Subsystem {
     public void HorzontalStop(){
     	HorzontalMotor.set(0);
     }
-}
+    
+    
+    
+
+    	
+    }
+
+
