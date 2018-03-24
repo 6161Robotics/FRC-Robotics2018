@@ -27,7 +27,7 @@ public class DriveAutoOuttake extends CommandGroup{
     // arm.
 	addSequential(new SlideUpwards(1));
 	addSequential(new SlideForwards(0.5));
-	addSequential(new Outtake(1));
+	addSequential(new Outtake());
 	//TODO Deposit Box
 	}
 }

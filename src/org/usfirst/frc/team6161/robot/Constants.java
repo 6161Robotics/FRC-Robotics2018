@@ -26,6 +26,9 @@ public class Constants {
 	//Passed the switch and now need to get to the other side
 	public static final double AUTO_LATERAL_TRAVEL_DURATION = 2;
 	
+	//For the triggers of the xbox controller
+	public static final double AXIS_BUTTON_THRESHHOLD = 0.2;
+	
 	
 	// Turn rotations
 	public static final double RIGHT_TURN_ROTATION = 0.6;

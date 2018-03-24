@@ -18,7 +18,12 @@ public class SlideDownwards extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.SliderBase.VerticalDown();
+    	if (Robot.SliderBase.isAtBot() == false) {
+    		Robot.SliderBase.VerticalDown();
+    	} else {
+    		Robot.SliderBase.VerticalStop();
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

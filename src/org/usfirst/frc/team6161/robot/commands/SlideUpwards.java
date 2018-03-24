@@ -2,6 +2,7 @@ package org.usfirst.frc.team6161.robot.commands;
 
 import org.usfirst.frc.team6161.robot.Robot;
 
+
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SlideUpwards extends Command {
@@ -19,7 +20,12 @@ public class SlideUpwards extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.SliderBase.VerticalUp();
+    	if (Robot.SliderBase.isAtTop() == false) {
+    		Robot.SliderBase.VerticalUp();
+    	} else {
+    		Robot.SliderBase.VerticalStop();
+    	}
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

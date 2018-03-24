@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6161.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
@@ -20,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.subsystems.*;
+import org.usfirst.frc.team6161.robot.commands.auto.AutoNothing;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartCenter;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartLeft;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartRight;
@@ -51,14 +51,6 @@ public class Robot extends IterativeRobot {
 	PowerDistributionPanel pdp; 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
-	public static DigitalInput topVerticalLimitSwitch;
-	public static DigitalInput botVerticalLimitSwitch;
-	
-	public static DigitalInput frontHorizontalLimitSwitch;
-	public static DigitalInput rearHorizontalLimitSwitch;
-	
-
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -73,7 +65,8 @@ public class Robot extends IterativeRobot {
 		
 
 		// Add Commands to show in Autonomous drop-down on Smart Dashboard
-		chooser.addDefault("Default Auto", new AutoStraight());
+		chooser.addDefault("'Small Forward'", new AutoNothing());
+		chooser.addDefault("Forwards", new AutoStraight());
 		chooser.addObject("Auto Start Left", new AutoStartLeft());
 		chooser.addObject("Auto Start Right", new AutoStartRight());
 		chooser.addObject("Auto Start Center", new AutoStartCenter());
@@ -87,14 +80,7 @@ public class Robot extends IterativeRobot {
 		ArmsBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
-		
-		topVerticalLimitSwitch = new DigitalInput(1);
-		botVerticalLimitSwitch = new DigitalInput(2);
-		
-		frontHorizontalLimitSwitch = new DigitalInput(3);
-		rearHorizontalLimitSwitch = new DigitalInput(4);
-		
-	}
+			}
 
 	@Override
 	public void robotPeriodic() {
@@ -115,34 +101,38 @@ public class Robot extends IterativeRobot {
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	*/
-		boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
-		boolean downButton = Robot.oi.getTheJoystick().getRawButton(2);
+
+
+
+		//boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
+		//boolean downButton = Robot.oi.getTheJoystick().getRawButton(2);
 		
-		boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
+	//	boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
+//		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
 		
-		if (topVerticalLimitSwitch.get()) { // If the top limit switch is activated, we want to prevent Upwards button from being used
-            upButton.setEnabled(false);
-            downButton = Robot.oi.getTheJoystick().getRawButton(2);
-		}
-        else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is activated, we want to prevent Downwards button from being used
-            downButton = false;
-            upButton = Robot.oi.getTheJoystick().getRawButton(4);
-        }
+//		if (topVerticalLimitSwitch.get()) { // If the top limit switch is activated, we want to prevent Upwards button from being used
+//            upButton.setEnabled(false);
+//            downButton = Robot.oi.getTheJoystick().getRawButton(2);
+//		}
+//        else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is activated, we want to prevent Downwards button from being used
+//            downButton = false;
+//            upButton = Robot.oi.getTheJoystick().getRawButton(4);
+//        }
 //        RobotMap.sliderBaseVerticalMotor.set(output);
         
         
         
-		if (frontHorizontalLimitSwitch.get()) {// If the front limit switch is activated, we want to prevent Forwards button from being used
-            forwardButton = false;
-            backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
-		}
-        else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is activated, we want to prevent Backwards button from being used
-            backwardButton = false;
-            forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-        }
+//		if (frontHorizontalLimitSwitch.get()) {// If the front limit switch is activated, we want to prevent Forwards button from being used
+//            forwardButton = false;
+//            backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
+//		}
+//        else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is activated, we want to prevent Backwards button from being used
+//            backwardButton = false;
+//            forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
+//        }
 //        RobotMap.sliderBaseHorizontalMotor.set(output);
 		
+
 
 	}
 	
@@ -179,7 +169,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
-		//autonomousCommand = new AutoStartCenterGoLeft();
+		
 		autonomousCommand = chooser.getSelected();
 		
 		if (autonomousCommand != null)
@@ -209,24 +199,11 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
-		Robot.driveBase.drivewithJoystick();
+		Robot.driveBase.drivewithXbox();
 		
-		while (topVerticalLimitSwitch.get()) {
-			Timer.delay(5);
-		}
-		
-		while (botVerticalLimitSwitch.get()) {
-			Timer.delay(5);
-		}
-		
-		while (frontHorizontalLimitSwitch.get()) {
-			Timer.delay(5);
-		}
-		
-		while (rearHorizontalLimitSwitch.get()) {
-			Timer.delay(5);
-		}
-		
+
+//		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
+
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||
 //	    		pdp.getCurrent(1) > 60.0 ||

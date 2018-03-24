@@ -83,8 +83,8 @@ public class RobotMap {
          sliderBaseVerticalMotor = new Spark(5);
          sliderBaseHorizontalMotor = new VictorSP(4);
          
-         armsBaseRightMotor = new Spark(7);
-         armsBaseLeftMotor = new Spark(6);
+         armsBaseRightMotor = new Spark(6);
+         armsBaseLeftMotor = new Spark(7);
          
          // TODO: Get rid of this eventually since we do not need this functionality
      //    dumpBaseDumpMotor = new Victor(6);
