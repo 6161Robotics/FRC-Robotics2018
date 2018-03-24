@@ -8,7 +8,6 @@
 package org.usfirst.frc.team6161.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
@@ -106,34 +105,7 @@ public class Robot extends IterativeRobot {
 	    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
 	    SmartDashboard.putNumber("Temperature: ", imu.getTemperature()); 
 	*/
-/*		boolean upButton = Robot.oi.getTheJoystick().getRawButton(4);
-		boolean downButton = Robot.oi.getTheJoystick().getRawButton(2);
-		
-		boolean forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-		boolean backwardButton = Robot.oi.getTheJoystick().getRawButton(1);*/
-		
-/*		if (topVerticalLimitSwitch.get()) { // If the top limit switch is pressed, we want to keep the values between -1 and 0
-            upButton = false;
-            downButton = Robot.oi.getTheJoystick().getRawButton(2);
-		}
-        else if(botVerticalLimitSwitch.get()) { // If the bottom limit switch is pressed, we want to keep the values between 0 and 1
-            downButton = false;
-            upButton = Robot.oi.getTheJoystick().getRawButton(4);
-        }
-//        RobotMap.sliderBaseVerticalMotor.set(output);
-        
-        
-        
-		if (frontHorizontalLimitSwitch.get()) {// If the front limit switch is pressed, we want to keep the values between -1 and 0
-            forwardButton = false;
-            backwardButton = Robot.oi.getTheJoystick().getRawButton(1);
-		}
-        else if(rearHorizontalLimitSwitch.get()) {// If the rear limit switch is pressed, we want to keep the values between 0 and 1
-            backwardButton = false;
-            forwardButton = Robot.oi.getTheJoystick().getRawButton(3);
-        }*/
-//        RobotMap.sliderBaseHorizontalMotor.set(output);
-		
+
 
 	}
 	
@@ -200,8 +172,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
-		Robot.driveBase.drivewithJoystick();
-
+		Robot.driveBase.drivewithXbox();
+		
 //		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
 
 //		//Brownout Protection
