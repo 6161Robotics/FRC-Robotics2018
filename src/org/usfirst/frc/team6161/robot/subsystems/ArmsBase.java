@@ -9,7 +9,7 @@ public class ArmsBase extends Subsystem {
 	public static final double FullRightSpeed = 1;
 	public static final double ReducedRightSpeed = 0.1;
 	
-	public static final double FullLeftSpeed = 1;
+	public static final double SomeLeftSpeed = 0.5;
 	public static final double ReducedLeftSpeed = 0.1;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -31,11 +31,11 @@ public class ArmsBase extends Subsystem {
     }
     public void Intake(){
     	RightMotor.set(-FullRightSpeed);
-    	LeftMotor.set(FullLeftSpeed);
+    	LeftMotor.set(SomeLeftSpeed);
     }
     public void Outtake(){
     	RightMotor.set(FullRightSpeed);
-    	LeftMotor.set(-FullLeftSpeed);
+    	LeftMotor.set(-SomeLeftSpeed);
     }
     public void Stay(){
     	RightMotor.set(ReducedRightSpeed);

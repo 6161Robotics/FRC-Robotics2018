@@ -68,10 +68,10 @@ public class OI {
         joySlideForwards.whileHeld(new SlideForwards(0.2));  
         
         joySlideUpwards = new JoystickButton(theJoystick, 4);
-        joySlideUpwards.whileHeld(new SlideUpwards(0.2));
+        joySlideUpwards.whenPressed(new SlideUpwards(2));
         
         joySlideDownwards = new JoystickButton(theJoystick, 2);
-        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
+        joySlideDownwards.whenPressed(new SlideDownwards(2));
 		
         joyIntake = new AxisButton(theJoystick, Gamepad.Axes.RIGHT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyIntake.whileHeld(new Intake());

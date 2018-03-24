@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.subsystems.*;
+import org.usfirst.frc.team6161.robot.commands.auto.AutoNothing;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartCenter;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartLeft;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartRight;
@@ -66,7 +67,8 @@ public class Robot extends IterativeRobot {
 		
 
 		// Add Commands to show in Autonomous drop-down on Smart Dashboard
-		chooser.addDefault("Default Auto", new AutoStraight());
+		chooser.addDefault("'Small Forward'", new AutoNothing());
+		chooser.addDefault("Forwards", new AutoStraight());
 		chooser.addObject("Auto Start Left", new AutoStartLeft());
 		chooser.addObject("Auto Start Right", new AutoStartRight());
 		chooser.addObject("Auto Start Center", new AutoStartCenter());
@@ -168,7 +170,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 
-		//autonomousCommand = new AutoStartCenterGoLeft();
+		
 		autonomousCommand = chooser.getSelected();
 		
 		if (autonomousCommand != null)
@@ -199,8 +201,8 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		Robot.driveBase.drivewithJoystick();
-		System.out.println("update");
-		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
+
+//		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
 
 //		//Brownout Protection
 //		if (pdp.getCurrent(0) > 60.0 ||

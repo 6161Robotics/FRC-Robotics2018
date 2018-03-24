@@ -28,7 +28,6 @@ public class SliderBase extends Subsystem {
 	public void init(){
 		VerticalMotor = RobotMap.sliderBaseVerticalMotor;
 		HorzontalMotor = RobotMap.sliderBaseHorizontalMotor;
-		SmartDashboard.putBoolean("Front HE sensor", frontHorizontalLimitSwitch.get());
 	}
 	
     public void initDefaultCommand() {
