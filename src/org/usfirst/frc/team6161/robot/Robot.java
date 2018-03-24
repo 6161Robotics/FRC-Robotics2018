@@ -80,14 +80,7 @@ public class Robot extends IterativeRobot {
 		ArmsBase.init();
 //		roombaBase.init();
 		// call other subsystem inits here
-		
-		topVerticalLimitSwitch = new DigitalInput(1);
-		botVerticalLimitSwitch = new DigitalInput(2);
-		
-		frontHorizontalLimitSwitch = new DigitalInput(3);
-		rearHorizontalLimitSwitch = new DigitalInput(4);
-		
-	}
+			}
 
 	@Override
 	public void robotPeriodic() {
