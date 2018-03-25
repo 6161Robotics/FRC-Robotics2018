@@ -36,25 +36,29 @@ public class RobotMap {
     public static SpeedController driveBaseLeftRear;
     public static DifferentialDrive driveBaseThe4Motors;
     public static SpeedController dumpBaseDumpMotor;
-    public static SpeedController climberBaseclimbMotor;
-    public static SpeedController roombaBaseRoombaMotor;
+    public static SpeedController sliderBaseVerticalMotor;
+    public static SpeedController sliderBaseHorizontalMotor; 
+    public static SpeedController armsBaseRightMotor;
+    public static SpeedController armsBaseLeftMotor;
     
     
     
     
     public static void init() {
-    	 driveBaseRightFront = new Spark(2);
+    	 driveBaseRightFront = new Spark(1);
 //         LiveWindow.addActuator("DriveBase", "RightFront", (Spark) driveBaseRightFront);
          
-         driveBaseRightRear = new Spark(3);
+         driveBaseRightRear = new Victor(0);
 //         LiveWindow.addActuator("DriveBase", "RightRear", (Spark) driveBaseRightRear);
 
          SpeedControllerGroup rightSpeedController = new SpeedControllerGroup(driveBaseRightFront, driveBaseRightRear);
          
-         driveBaseLeftFront = new Spark(0);
+         
+         
+         driveBaseLeftFront = new Spark(3);
 //         LiveWindow.addActuator("DriveBase", "LeftFront", (Spark) driveBaseLeftFront);
          
-         driveBaseLeftRear = new Spark(1);
+         driveBaseLeftRear = new Victor(2);
 //         LiveWindow.addActuator("DriveBase", "LeftRear", (Spark) driveBaseLeftRear);
   
          SpeedControllerGroup leftSpeedController = new SpeedControllerGroup(driveBaseLeftFront, driveBaseLeftRear);
@@ -76,14 +80,14 @@ public class RobotMap {
 //         driveBaseThe4Motors.setInvertedMotor(DifferentialDrive.MotorType.kRearRight, true);
          rightSpeedController.setInverted(false);
          
-         dumpBaseDumpMotor = new Victor(5);
-//         LiveWindow.addActuator("DumpBase", "DumpMotor", (Victor) dumpBaseDumpMotor);
+         sliderBaseVerticalMotor = new Spark(5);
+         sliderBaseHorizontalMotor = new VictorSP(4);
          
-         climberBaseclimbMotor = new VictorSP(4);
-//         LiveWindow.addActuator("LiftBase", "LiftMotor", (VictorSP) climberBaseclimbMotor);
+         armsBaseRightMotor = new Spark(6);
+         armsBaseLeftMotor = new Spark(7);
          
          // TODO: Get rid of this eventually since we do not need this functionality
-         roombaBaseRoombaMotor = new Victor(6);
+     //    dumpBaseDumpMotor = new Victor(6);
 //         LiveWindow.addActuator("RoombaBase", "RoombaMotor", (Victor) roombaBaseRoombaMotor);
     }
 }

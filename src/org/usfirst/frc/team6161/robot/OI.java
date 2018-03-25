@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team6161.robot;
 
+
+import org.usfirst.frc.team6161.robot.Gamepad;
+import org.usfirst.frc.team6161.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -42,34 +45,60 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public JoystickButton joyRoombaIn;
-	public JoystickButton joyRoombaOut;
+
 	public JoystickButton joyClimbUp;
 	public JoystickButton joyClimbDown;
-	public JoystickButton joyDumpUp;
-	public JoystickButton joyDumpDown;
+	public JoystickButton joySlideForwards;
+	public JoystickButton joySlideBackwards;
+	public JoystickButton joySlideDownwards;
+	public JoystickButton joySlideUpwards;
+	public AxisButton joyIntake;
+	public AxisButton joyOuttake;
+
+	public Joystick theXbox;
 	public Joystick theJoystick;
 
 	public OI() {
-		theJoystick = new Joystick(0);
+		theXbox = new Joystick(0);
+		theJoystick = new Joystick(1);
 		
-		// TODO: Initialize buttons
-//		joyDumpDown = new JoystickButton(theJoystick, 3);
-//        joyDumpDown.whileHeld(new dumpDown());
-//        joyDumpUp = new JoystickButton(theJoystick, 4);
-//        joyDumpUp.whileHeld(new dumpUp());
+
+		joySlideBackwards = new JoystickButton(theXbox, 6);
+        joySlideBackwards.whileHeld(new SlideBackwards(0.2));
+		
+        joySlideForwards = new JoystickButton(theXbox, 5);
+        joySlideForwards.whileHeld(new SlideForwards(0.2));  
+        
+        joySlideUpwards = new JoystickButton(theXbox, 4);
+        joySlideUpwards.whileHeld(new SlideUpwards(0.2));
+        
+        joySlideDownwards = new JoystickButton(theXbox, 2);
+        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
+		
+        joyIntake = new AxisButton(theXbox, Gamepad.Axes.RIGHT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
+        joyIntake.whileHeld(new Intake());
+        
+        joyOuttake = new AxisButton(theXbox, Gamepad.Axes.LEFT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
+        joyOuttake.whileHeld(new Outtake());
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
+		
 //        joyClimbDown = new JoystickButton(theJoystick, 5);
 //        joyClimbDown.whileHeld(new climberDown());
+		
 //        joyRoombaOut = new JoystickButton(theJoystick, 2);
 //        joyRoombaOut.whileHeld(new roombaOut());
+		
 //        joyRoombaIn = new JoystickButton(theJoystick, 1);
 //        joyRoombaIn.whileHeld(new roombaIn());
         
 	}
+
+
+
+
 	//a method for the joystick
 	public Joystick getTheJoystick() {
-        return theJoystick;
+        return theXbox;
     }
 }
