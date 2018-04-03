@@ -35,4 +35,25 @@ public class Constants {
 	public static final double LEFT_TURN_ROTATION = -0.6;	
 	
 	
+	 public class Deadbands {
+
+	        /**
+	         * Deadband threshold for drive joysticks
+	         */
+	        public static final double DRIVE_STICK = 0.15;
+
+	    }
+	 
+	 public class Calibration {
+
+	        /***
+	         * Controls the sensitivity algorithm.
+	         * 0 results in a linear control-to-speed relationship, while 1 results in cubed.
+	         *
+	         * NEVER SET ABOVE 1 OR BELOW 0
+	         */
+	        public static final double SENSITIVITY_FACTOR = .2;
+
+	    }
+	
 }

@@ -8,6 +8,8 @@
 package org.usfirst.frc.team6161.robot;
 
 
+import  org.usfirst.frc.team6161.robot.Constants;
+
 import org.usfirst.frc.team6161.robot.Gamepad;
 import org.usfirst.frc.team6161.robot.commands.*;
 import edu.wpi.first.wpilibj.Joystick;
@@ -56,30 +58,38 @@ public class OI {
 	public AxisButton joyOuttake;
 
 	public Joystick theXbox;
-	public Joystick theJoystick;
+	public Gamepad thePS;
+	
+
 
 	public OI() {
 		theXbox = new Joystick(0);
-		theJoystick = new Joystick(1);
+		thePS = new Gamepad(1);
 		
-
-		joySlideBackwards = new JoystickButton(theXbox, 6);
-        joySlideBackwards.whileHeld(new SlideBackwards(0.2));
 		
-        joySlideForwards = new JoystickButton(theXbox, 5);
-        joySlideForwards.whileHeld(new SlideForwards(0.2));  
-        
-        joySlideUpwards = new JoystickButton(theXbox, 4);
-        joySlideUpwards.whileHeld(new SlideUpwards(0.2));
-        
-        joySlideDownwards = new JoystickButton(theXbox, 2);
-        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
 		
         joyIntake = new AxisButton(theXbox, Gamepad.Axes.RIGHT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyIntake.whileHeld(new Intake());
         
         joyOuttake = new AxisButton(theXbox, Gamepad.Axes.LEFT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyOuttake.whileHeld(new Outtake());
+        
+        
+		joySlideBackwards = new JoystickButton(thePS, Gamepad.Axes.RIGHT_Y.getNumber());
+        joySlideBackwards.whileHeld(new SlideUpwards(0.2));
+		
+        joySlideDownwards = new JoystickButton(theXbox, 2);
+        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
+        
+        joySlideForwards = new JoystickButton(theXbox, 5);
+        joySlideForwards.whileHeld(new SlideForwards(0.2));  
+        
+        joySlideUpwards = new JoystickButton(theXbox, 4);
+        joySlideUpwards.whileHeld(new SlideBackwards(0.2));
+        
+
+		
+
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
 		
@@ -94,7 +104,12 @@ public class OI {
         
 	}
 
-
+    private double transformStickToSpeed(Gamepad.Axes stick) {
+        double result = thePS.getRawAxis(stick) * -1;
+        result = Helpers.applyDeadband(result, Constants.Deadbands.DRIVE_STICK);
+        result = Helpers.applySensitivityTransform(result);
+        return result;
+    }
 
 
 	//a method for the joystick
