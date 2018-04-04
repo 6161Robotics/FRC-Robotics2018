@@ -6,7 +6,10 @@ public class Constants {
 	public static final double AUTO_START_WAIT = 3;
 	
 	// Travel time from auto start to switch
-	public static final double AUTO_FULL_TRAVEL_DURATION = 1.0;
+	public static final double AUTO_FULL_TRAVEL_DURATION = 4.0;
+	
+	//To get out of the way of the switch after we deposit :)
+	public static final double AUTO_SHORT_TRAVEL_DURATION = 1.0;
 	
 	//90 degree turn with turn rotation set to 0.6	
 	public static final double AUTO_FULL_TURNING_DURATION = 1.0;

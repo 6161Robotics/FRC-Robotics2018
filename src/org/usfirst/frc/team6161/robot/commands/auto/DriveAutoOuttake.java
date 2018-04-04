@@ -25,9 +25,9 @@ public class DriveAutoOuttake extends CommandGroup{
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-	addSequential(new SlideUpwards(1));
-	addSequential(new SlideForwards(0.5));
-	addSequential(new Outtake());
+	addSequential(new SlideUpwards(4.0));
+	addSequential(new SlideForwards(4.0));
+	addSequential(new Outtake(4.0));
 	//TODO Deposit Box
 	}
 }

@@ -26,10 +26,11 @@ public class AutoStartLeftGoLeft extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new WaitCommand(Constants.AUTO_START_WAIT));
+    	//addSequential(new WaitCommand(Constants.AUTO_START_WAIT));
     	addSequential(new DriveAutoForward(Constants.AUTO_FULL_TRAVEL_DURATION));
     	addSequential(new DriveAutoRightTurn(Constants.AUTO_FULL_TURNING_DURATION));
     	addSequential(new DriveAutoOuttake());
-
+    	addSequential(new DriveAutoLeftTurn(Constants.AUTO_FULL_TURNING_DURATION));
+    	addSequential(new DriveAutoForward(Constants.AUTO_SHORT_TRAVEL_DURATION));
     }
 }

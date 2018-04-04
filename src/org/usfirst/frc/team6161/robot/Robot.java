@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Forwards", new AutoStraight());
 		chooser.addObject("Auto Start Left", new AutoStartLeft());
 		chooser.addObject("Auto Start Right", new AutoStartRight());
-		chooser.addObject("Auto Start Center", new AutoStartCenter());
+//		chooser.addObject("Auto Start Center", new AutoStartCenter());
 		SmartDashboard.putData("Autonomous Scenarios", chooser);
 		
 		

@@ -8,20 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveAutoLeftTurn extends Command {
-		private double timeout;
+	
     public DriveAutoLeftTurn(double autoFullTurningDuration) {
-     this.timeout = autoFullTurningDuration;
+   
+     setTimeout(autoFullTurningDuration);
     	requires(Robot.driveBase);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(timeout);
-    	Robot.driveBase.turnLeft();
+    	//setTimeout(timeout);
+    	//Robot.driveBase.turnLeft();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.driveBase.turnLeft();
     }
 
     // Make this return true when this Command no longer needs to run execute()

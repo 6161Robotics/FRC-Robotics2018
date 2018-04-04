@@ -30,5 +30,7 @@ public class AutoStartRightGoRight extends CommandGroup {
     	addSequential(new DriveAutoForward(Constants.AUTO_FULL_TRAVEL_DURATION));
     	addSequential(new DriveAutoLeftTurn(Constants.AUTO_FULL_TURNING_DURATION));
     	addSequential(new DriveAutoOuttake());
+    	addSequential(new DriveAutoRightTurn(Constants.AUTO_FULL_TURNING_DURATION));
+    	addSequential(new DriveAutoForward(Constants.AUTO_SHORT_TRAVEL_DURATION));
     }
 }

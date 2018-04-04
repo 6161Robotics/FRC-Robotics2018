@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class SlideDownwards extends Command {
 
-    public SlideDownwards(double d) {
+    public SlideDownwards() {
     	requires(Robot.SliderBase);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

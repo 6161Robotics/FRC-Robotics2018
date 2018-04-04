@@ -23,7 +23,7 @@ public class AutoStartLeft extends CommandGroup{
             			
             		  } 
             		  else {
-            			autonomousCommand = new AutoStartLeftGoRight();
+            			autonomousCommand = new AutoStraight();
             		  }
                             }
                 }

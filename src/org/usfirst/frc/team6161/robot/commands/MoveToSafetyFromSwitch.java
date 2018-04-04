@@ -24,8 +24,8 @@ public class MoveToSafetyFromSwitch extends CommandGroup {
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
 	    	// If at Switch
-	    	addSequential(new SlideDownwards(0.5));
-	    	addSequential(new SlideBackwards(0.5));
+	    	addSequential(new SlideDownwards());
+	    	addSequential(new SlideBackwards());
 	    
 	    }
 	

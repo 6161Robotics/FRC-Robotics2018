@@ -7,12 +7,19 @@ import edu.wpi.first.wpilibj.command.Command;
 public class SlideForwards extends Command {
 
 
-    public SlideForwards(double d) {
+    public SlideForwards() {
     	requires(Robot.SliderBase);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
+    public SlideForwards(double timeout) {
+    	requires(Robot.SliderBase);
+    	setTimeout(4.0);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    }
+    
     // Called just before this Command runs the first time
     protected void initialize() {
     }

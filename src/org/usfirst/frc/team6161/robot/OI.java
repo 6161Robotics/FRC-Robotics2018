@@ -12,6 +12,9 @@ import  org.usfirst.frc.team6161.robot.Constants;
 
 import org.usfirst.frc.team6161.robot.Gamepad;
 import org.usfirst.frc.team6161.robot.commands.*;
+import org.usfirst.frc.team6161.robot.commands.auto.DriveAutoLeftTurn;
+import org.usfirst.frc.team6161.robot.commands.auto.DriveAutoOuttake;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -54,6 +57,8 @@ public class OI {
 	public JoystickButton joySlideBackwards;
 	public JoystickButton joySlideDownwards;
 	public JoystickButton joySlideUpwards;
+	public JoystickButton joyMoveToSwitch;
+	public JoystickButton joyMoveToSafety;
 	public AxisButton joyIntake;
 	public AxisButton joyOuttake;
 
@@ -75,17 +80,23 @@ public class OI {
         joyOuttake.whileHeld(new Outtake());
         
         
-		joySlideBackwards = new JoystickButton(thePS, Gamepad.Axes.RIGHT_Y.getNumber());
-        joySlideBackwards.whileHeld(new SlideUpwards(0.2));
+		joySlideBackwards = new JoystickButton(theXbox, 1);
+        joySlideBackwards.whileHeld(new SlideUpwards());
 		
         joySlideDownwards = new JoystickButton(theXbox, 2);
-        joySlideDownwards.whileHeld(new SlideDownwards(0.2));
+        joySlideDownwards.whileHeld(new SlideDownwards());
         
-        joySlideForwards = new JoystickButton(theXbox, 5);
-        joySlideForwards.whileHeld(new SlideForwards(0.2));  
+        joyMoveToSwitch = new JoystickButton(theXbox, 3);
+        joyMoveToSwitch.whenPressed(new DriveAutoOuttake());
         
-        joySlideUpwards = new JoystickButton(theXbox, 4);
-        joySlideUpwards.whileHeld(new SlideBackwards(0.2));
+  //      joyMoveToSafety = new JoystickButton(theXbox, 4);
+  //      joyMoveToSafety.whileHeld(new ());
+        
+        joySlideForwards = new JoystickButton(theXbox, 6);
+        joySlideForwards.whileHeld(new SlideForwards());  
+        
+        joySlideUpwards = new JoystickButton(theXbox, 5);
+        joySlideUpwards.whileHeld(new SlideBackwards());
         
 
 		

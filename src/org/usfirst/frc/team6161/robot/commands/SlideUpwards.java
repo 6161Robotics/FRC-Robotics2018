@@ -6,13 +6,22 @@ import org.usfirst.frc.team6161.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class SlideUpwards extends Command {
+	
 
-    public SlideUpwards(double d) {
+
+    public SlideUpwards() {
     	requires(Robot.SliderBase);
+        
+    	// Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    }
+    
+    public SlideUpwards(double timeout) {
+    	requires(Robot.SliderBase);
+    	setTimeout(timeout);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
-
     // Called just before this Command runs the first time
     protected void initialize() {
     	
@@ -22,7 +31,8 @@ public class SlideUpwards extends Command {
     protected void execute() {
     	if (Robot.SliderBase.isAtTop() == false) {
     		Robot.SliderBase.VerticalUp();
-    	} else {
+    	} else  {
+    		
     		Robot.SliderBase.VerticalStop();
     	}
 

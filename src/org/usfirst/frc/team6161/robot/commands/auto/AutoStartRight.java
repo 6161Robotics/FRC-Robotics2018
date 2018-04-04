@@ -20,8 +20,7 @@ public class AutoStartRight extends CommandGroup {
                 {
 		  if(gameData.charAt(0) == 'L')
 		  {
-			autonomousCommand = new AutoStartRightGoLeft();
-			
+			autonomousCommand = new AutoStraight();			
 		  } 
 		  else {
 			autonomousCommand = new AutoStartRightGoRight();

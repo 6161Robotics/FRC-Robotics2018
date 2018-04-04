@@ -24,8 +24,8 @@ public class MoveToSafetyFromGround extends CommandGroup {
 	        // a CommandGroup containing them would require both the chassis and the
 	        // arm.
 		 	// If at Ground
-		 	addSequential(new SlideUpwards(0.5));
-	    	addSequential(new SlideBackwards(0.5));
+		 	addSequential(new SlideUpwards());
+	    	addSequential(new SlideBackwards());
 	    
 	    }
 	
