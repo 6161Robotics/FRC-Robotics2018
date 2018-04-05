@@ -63,13 +63,13 @@ public class OI {
 	public AxisButton joyOuttake;
 
 	public Joystick theXbox;
-	public Gamepad thePS;
+	public Joystick theXboxOne;
 	
 
 
 	public OI() {
 		theXbox = new Joystick(0);
-		thePS = new Gamepad(1);
+		theXboxOne = new Joystick(1);
 		
 		
 		
@@ -98,9 +98,6 @@ public class OI {
         joySlideUpwards = new JoystickButton(theXbox, 5);
         joySlideUpwards.whileHeld(new SlideBackwards());
         
-
-		
-
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
 //        joyClimbUp.whileHeld(new climberUp());
 		
@@ -115,12 +112,12 @@ public class OI {
         
 	}
 
-    private double transformStickToSpeed(Gamepad.Axes stick) {
-        double result = thePS.getRawAxis(stick) * -1;
+/*    private double transformStickToSpeed(Gamepad.Axes stick) {
+        double result = theXboxOne.getRawAxis(stick) * -1;
         result = Helpers.applyDeadband(result, Constants.Deadbands.DRIVE_STICK);
         result = Helpers.applySensitivityTransform(result);
         return result;
-    }
+    }*/
 
 
 	//a method for the joystick
