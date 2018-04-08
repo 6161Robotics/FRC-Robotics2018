@@ -8,10 +8,14 @@ import org.usfirst.frc.team6161.robot.Robot;
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 public class DriveBase extends Subsystem {
-	public static final double autoSpeed = 0.9;
-	public double lastForward = 0.25;
-//	public double lastTurn = 1;
-    public double curve = 0.07;
+	public static final double autoSpeed = 0.95;
+	
+	public double lastForward = 0.25; //used to be 0.25 for Xbox drive
+	
+	public double lastTurn = 0.2; 
+	
+    public double curve = 0.07; //used to be 0.07 for Xbox
+    
 /*    public static long startTime = System.currentTimeMillis();
     public static int autoDuration = 15;
     public static long autoDurationMilis = autoDuration*1000; */
@@ -34,10 +38,10 @@ public class DriveBase extends Subsystem {
     public DifferentialDrive getRobotDrive(){
     	return the4Motors;
     }
-    public void drivewithXbox(){
-    	if (Robot.oi.getTheJoystick().getRawButton(7)){
+    public void driveWithXbox(){
+    	if (Robot.oi.getTheJoystick().getRawButton(8)){
     		Robot.driveBase.getRobotDrive().arcadeDrive(Robot.oi.theXbox.getRawAxis(1), Robot.oi.theXbox.getRawAxis(4));
-    		return;
+    		return;                                         //Xbox axes are raw 1 and raw 4 in this order
     	}
     	
     	if (Robot.oi.theXbox.getRawAxis(1) > lastForward) {
@@ -47,14 +51,14 @@ public class DriveBase extends Subsystem {
     	else {
     		lastForward -= curve;
     	}
-/*    	if (Robot.oi.theXbox.getRawAxis(4) > lastTurn) {
+    	if (Robot.oi.theXbox.getRawAxis(4) > lastTurn) {
     		lastTurn += curve;
     		//lastTurn = lastTurn + 0.02; <--- same as above
     	}
     	else {
     		lastTurn -= curve;
     	}
-		Robot.driveBase.getRobotDrive().arcadeDrive(lastForward, lastTurn);
+/*		Robot.driveBase.getRobotDrive().arcadeDrive(lastForward, lastTurn);
 				Before---^    	 */
     	Robot.driveBase.getRobotDrive().arcadeDrive(lastForward, Robot.oi.theXbox.getRawAxis(4));
     }

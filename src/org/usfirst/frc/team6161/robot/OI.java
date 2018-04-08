@@ -59,43 +59,54 @@ public class OI {
 	public JoystickButton joySlideUpwards;
 	public JoystickButton joyMoveToSwitch;
 	public JoystickButton joyMoveToSafety;
+	public JoystickButton joystickIntake;
+	public JoystickButton joystickOuttake;
 	public AxisButton joyIntake;
 	public AxisButton joyOuttake;
 
 	public Joystick theXbox;
-	public Joystick theXboxOne;
+	public Joystick theJoystick;
 	
 
 
 	public OI() {
 		theXbox = new Joystick(0);
-		theXboxOne = new Joystick(1);
+		theJoystick = new Joystick(1);
 		
 		
 		
         joyIntake = new AxisButton(theXbox, Gamepad.Axes.RIGHT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyIntake.whileHeld(new Intake());
         
+        joystickIntake = new JoystickButton(theJoystick, 1);
+        joystickIntake.whileHeld(new Intake());
+        
+        
+
         joyOuttake = new AxisButton(theXbox, Gamepad.Axes.LEFT_TRIGGER.getNumber(), Constants.AXIS_BUTTON_THRESHHOLD);
         joyOuttake.whileHeld(new Outtake());
         
+        joystickOuttake = new JoystickButton(theJoystick, 2);
+        joystickOuttake.whileHeld(new Outtake());
         
-		joySlideBackwards = new JoystickButton(theXbox, 1);
+        
+        
+		joySlideBackwards = new JoystickButton(theJoystick, 5);
         joySlideBackwards.whileHeld(new SlideUpwards());
 		
-        joySlideDownwards = new JoystickButton(theXbox, 2);
+        joySlideDownwards = new JoystickButton(theJoystick, 3);
         joySlideDownwards.whileHeld(new SlideDownwards());
         
-        joyMoveToSwitch = new JoystickButton(theXbox, 3);
-        joyMoveToSwitch.whenPressed(new DriveAutoOuttake());
+//        joyMoveToSwitch = new JoystickButton(theXbox, 3);
+//        joyMoveToSwitch.whenPressed(new DriveAutoOuttake());
         
   //      joyMoveToSafety = new JoystickButton(theXbox, 4);
   //      joyMoveToSafety.whileHeld(new ());
         
-        joySlideForwards = new JoystickButton(theXbox, 6);
+        joySlideForwards = new JoystickButton(theJoystick, 6);
         joySlideForwards.whileHeld(new SlideForwards());  
         
-        joySlideUpwards = new JoystickButton(theXbox, 5);
+        joySlideUpwards = new JoystickButton(theJoystick, 4);
         joySlideUpwards.whileHeld(new SlideBackwards());
         
 //        joyClimbUp = new JoystickButton(theJoystick, 6);
@@ -120,7 +131,12 @@ public class OI {
     }*/
 
 
-	//a method for the joystick
+private int getRawAxis() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	//a method for the joystick+
 	public Joystick getTheJoystick() {
         return theXbox;
     }

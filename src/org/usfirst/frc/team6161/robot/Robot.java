@@ -10,16 +10,16 @@ package org.usfirst.frc.team6161.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //import com.analog.adis16448.frc.ADIS16448_IMU;
 
 import org.usfirst.frc.team6161.robot.subsystems.*;
-import org.usfirst.frc.team6161.robot.commands.auto.AutoNothing;
+import org.usfirst.frc.team6161.robot.commands.auto.CenterDistanceSwitch;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartCenter;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartLeft;
 import org.usfirst.frc.team6161.robot.commands.auto.AutoStartRight;
@@ -64,13 +64,7 @@ public class Robot extends IterativeRobot {
 		pdp = new PowerDistributionPanel();
 		
 
-		// Add Commands to show in Autonomous drop-down on Smart Dashboard
-		chooser.addDefault("'Small Forward'", new AutoNothing());
-		chooser.addDefault("Forwards", new AutoStraight());
-		chooser.addObject("Auto Start Left", new AutoStartLeft());
-		chooser.addObject("Auto Start Right", new AutoStartRight());
-//		chooser.addObject("Auto Start Center", new AutoStartCenter());
-		SmartDashboard.putData("Autonomous Scenarios", chooser);
+
 		
 		
 		driveBase.init();
@@ -78,8 +72,16 @@ public class Robot extends IterativeRobot {
 		DumpBase.init();
 		SliderBase.init();
 		ArmsBase.init();
+		
+		chooser.addObject("'Small Forward'", new CenterDistanceSwitch());
+		chooser.addDefault("Forwards", new AutoStraight());
+		chooser.addObject("Auto Start Left", new AutoStartLeft());
+		chooser.addObject("Auto Start Right", new AutoStartRight());
+//		chooser.addObject("Auto Start Center", new AutoStartCenter());
+		SmartDashboard.putData("Autonomous Scenarios", chooser);
+		
 //		roombaBase.init();
-		// call other subsystem inits here
+
 			}
 
 	@Override
@@ -132,6 +134,8 @@ public class Robot extends IterativeRobot {
 //        }
 //        RobotMap.sliderBaseHorizontalMotor.set(output);
 		
+		// Add Commands to show in Autonomous drop-down on Smart Dashboard
+
 
 
 	}
@@ -168,6 +172,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
+		
 
 		
 		autonomousCommand = chooser.getSelected();
@@ -199,8 +204,9 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		
-		Robot.driveBase.drivewithXbox();
+	 Robot.driveBase.driveWithXbox();  
 		
+//		Robot.SliderBase.driveWithStick();
 
 //		SmartDashboard.putBoolean("Front HE sensor", SliderBase.frontHorizontalLimitSwitch.get());
 

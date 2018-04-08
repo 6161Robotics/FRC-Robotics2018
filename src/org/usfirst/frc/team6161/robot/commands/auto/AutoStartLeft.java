@@ -33,7 +33,7 @@ public class AutoStartLeft extends CommandGroup{
                 }
                 
             	protected boolean isFinished() {
-            		return false;
+            		return true;
             	}
             	
                 protected void end() {
