@@ -11,15 +11,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class SliderBase extends Subsystem {
 
 	public static final double VerticalSpeed = 1;
-	public static final double HorzontalSpeed = 1;
+	public static final double VerticalDownSpeed = 0.8;
+	public static final double HorzontalSpeed = 0.75;
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
 	private SpeedController VerticalMotor;
 	private SpeedController HorzontalMotor;
 	
-	DigitalInput topVerticalLimitSwitch = new DigitalInput(3);
-	DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
+	public DigitalInput topVerticalLimitSwitch = new DigitalInput(3);
+	public DigitalInput botVerticalLimitSwitch = new DigitalInput(2);
 	
 	public DigitalInput frontHorizontalLimitSwitch = new DigitalInput(0);
 	public DigitalInput rearHorizontalLimitSwitch = new DigitalInput(1);
@@ -35,6 +37,11 @@ public class SliderBase extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+/*    public void PositiveLeftYAxis(){
+    	Robot.oi.theXbox.getAxisType(1)
+    	
+    }*/
     
     public boolean isAtFront(){
     	return !frontHorizontalLimitSwitch.get();
@@ -55,12 +62,17 @@ public class SliderBase extends Subsystem {
     public void VerticalUp(){
    		VerticalMotor.set(VerticalSpeed);
     	
-    	
-    	
     }
     public void VerticalDown(){
-    	VerticalMotor.set(-VerticalSpeed);
+    	VerticalMotor.set(-VerticalDownSpeed);
     }
+/*   public void VerticalUp(){
+	   VerticalMotor.set(Robot.oi.theXbox.getRawAxis(1));
+   }
+   public void VerticalDown(){
+	   VerticalMotor.set(Robot.oi.theXbox.getRawAxis(1));
+   }*/
+   
     public void VerticalStop(){
     	VerticalMotor.set(0);
     }
@@ -78,10 +90,7 @@ public class SliderBase extends Subsystem {
     	HorzontalMotor.set(0);
     }
     
-    
-    
-
-    	
+   
     }
 
 

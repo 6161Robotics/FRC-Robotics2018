@@ -1,14 +1,17 @@
 package org.usfirst.frc.team6161.robot.commands.auto;
 
+import org.usfirst.frc.team6161.robot.Constants;
+import org.usfirst.frc.team6161.robot.commands.Outtake;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
  */
-public class AutoNothing extends CommandGroup {
+public class CenterDistanceSwitch extends CommandGroup {
 
-    public AutoNothing() {
+    public CenterDistanceSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -25,7 +28,9 @@ public class AutoNothing extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new WaitCommand(1));
+    //	addSequential(new WaitCommand(1));
+    	addSequential(new DriveAutoForward(Constants.AUTO_SWITCH_STARTS_DURATION));
+    	addSequential(new DriveAutoOuttake());
     	
     }
 }
