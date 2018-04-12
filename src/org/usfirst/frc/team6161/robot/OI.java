@@ -114,12 +114,7 @@ public class OI {
 		
 //        joyClimbDown = new JoystickButton(theJoystick, 5);
 //        joyClimbDown.whileHeld(new climberDown());
-		
-//        joyRoombaOut = new JoystickButton(theJoystick, 2);
-//        joyRoombaOut.whileHeld(new roombaOut());
-		
-//        joyRoombaIn = new JoystickButton(theJoystick, 1);
-//        joyRoombaIn.whileHeld(new roombaIn());
+	
         
 	}
 
