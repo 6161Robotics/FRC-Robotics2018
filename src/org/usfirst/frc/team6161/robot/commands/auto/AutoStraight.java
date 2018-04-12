@@ -29,7 +29,7 @@ public class AutoStraight extends CommandGroup {
         // arm.
     	
     	addSequential(new DriveAutoForward(Constants.AUTO_FULL_TRAVEL_DURATION));
-    	addSequential(new WaitCommand(20));
+    	//addSequential(new WaitCommand(20));
     	
     }
 }
